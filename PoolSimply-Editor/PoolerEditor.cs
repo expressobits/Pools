@@ -27,6 +27,9 @@ namespace ExpressoBits.PoolSimply.Editor
         {
             var pooler = target as Pooler;
 
+            if(Pools.Instance == null)
+                EditorGUILayout.HelpBox("Pools instance null! Add component 'Pools' on your GameManager", MessageType.Error);
+
             EditorGUILayout.LabelField("Pool ID", EditorStyles.boldLabel);
             pooler.id = EditorGUILayout.TextField("IDExample", pooler.id);
 
