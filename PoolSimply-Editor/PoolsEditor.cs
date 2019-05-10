@@ -2,10 +2,10 @@
 using UnityEditor;
 using System.Collections.Generic;
 
-namespace ExpressoBits.PoolSimply
+namespace ExpressoBits.PoolSimply.Editor
 {
     [CustomEditor(typeof(Pools))]
-    public class PoolsEditor : Editor
+    public class PoolsEditor : UnityEditor.Editor
     {
 
         public override void OnInspectorGUI()
