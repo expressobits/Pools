@@ -11,7 +11,7 @@ namespace ExpressoBits.PoolSimply.Editor
         private void SetIcons()
         {
             // this sets the icon on the game object containing our behaviour
-            (target as Pooler).gameObject.SetIcon("Floater", Properties.Resources.Floater);
+            //(target as Pooler).gameObject.SetIcon("Floater", Properties.Resources.Floater);
 
             // this sets the icon on the script (which normally shows the blank page icon)
             MonoScript.FromMonoBehaviour(target as Pooler).SetIcon("Floater", Properties.Resources.Floater);
@@ -28,7 +28,7 @@ namespace ExpressoBits.PoolSimply.Editor
             var pooler = target as Pooler;
 
             if(Pools.Instance == null)
-                EditorGUILayout.HelpBox("Pools instance null! Add component 'Pools' on your GameManager", MessageType.Error);
+                EditorGUILayout.HelpBox("Not found Pools instance!\nAdd one component 'Pools' on your Scene!", MessageType.Error);
 
             EditorGUILayout.LabelField("Pool ID", EditorStyles.boldLabel);
             pooler.id = EditorGUILayout.TextField("IDExample", pooler.id);
@@ -43,7 +43,6 @@ namespace ExpressoBits.PoolSimply.Editor
             }
 
             EditorGUILayout.Separator();
-
 
             EditorGUILayout.LabelField("Event From Pool", EditorStyles.boldLabel);
 

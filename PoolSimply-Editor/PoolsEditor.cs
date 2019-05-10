@@ -8,6 +8,22 @@ namespace ExpressoBits.PoolSimply.Editor
     public class PoolsEditor : UnityEditor.Editor
     {
 
+        private void SetIcons()
+        {
+            // this sets the icon on the game object containing our behaviour
+            //(target as Pools).gameObject.SetIcon("Pool", Properties.Resources.Pool);
+
+            // this sets the icon on the script (which normally shows the blank page icon)
+            MonoScript.FromMonoBehaviour(target as Pools).SetIcon("Pool", Properties.Resources.Pool);
+        }
+
+        protected virtual void Awake()
+        {
+            SetIcons();
+            Pools.Instance = target as Pools;
+        }
+
+
         public override void OnInspectorGUI()
         {
 
