@@ -85,11 +85,35 @@
           }
         }
       },
+      "Unity.UNetWeaver/1.0.6997.31976": {
+        "runtime": {
+          "Unity.UNetWeaver.dll": {
+            "assemblyVersion": "1.0.6997.31976",
+            "fileVersion": "1.0.6997.31976"
+          }
+        }
+      },
       "Unity.CecilTools/1.0.0.0": {
         "runtime": {
           "Unity.CecilTools.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Unity.Cecil.Pdb/0.10.0.0": {
+        "runtime": {
+          "Unity.Cecil.Pdb.dll": {
+            "assemblyVersion": "0.10.0.0",
+            "fileVersion": "0.10.0.0"
+          }
+        }
+      },
+      "Unity.Cecil.Mdb/0.10.0.0": {
+        "runtime": {
+          "Unity.Cecil.Mdb.dll": {
+            "assemblyVersion": "0.10.0.0",
+            "fileVersion": "0.10.0.0"
           }
         }
       }
@@ -155,7 +179,22 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Unity.UNetWeaver/1.0.6997.31976": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Unity.CecilTools/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.Cecil.Pdb/0.10.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Unity.Cecil.Mdb/0.10.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
