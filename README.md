@@ -17,6 +17,8 @@ Create Simple and Easy Pool of objects! This extension creates easy use of Pool 
 
 ## Tutorial
 
+![Demo Scene](https://github.com/ExpressoBits/PoolSimply/blob/master/Docs/Scene.gif)
+
 ### Create a simple pool
 
 //TODO Tutorial

@@ -9,13 +9,6 @@ public class Spawn : MonoBehaviour
     public GameObject bulletPrefab;
     public float rangeRandomSize;
 
-
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
     private void Fire()
     {
         GameObject bullet = this.InstantiateInPool(bulletPrefab);
@@ -27,11 +20,13 @@ public class Spawn : MonoBehaviour
         return new Vector3(vector3.x + Random.Range(-rangeRandomSize, rangeRandomSize), vector3.y, vector3.z);
     }
 
+    //Enable spawn fire balls
     private void OnEnable()
     {
         InvokeRepeating("Fire", fireTime, fireTime);
     }
 
+    //Disable spawn fire balls
     private void OnDisable()
     {
         CancelInvoke("Fire");
