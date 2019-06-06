@@ -5,14 +5,25 @@ using ExpressoBits.PoolSimply;
 
 public class Spawn : MonoBehaviour
 {
-    public float fireTime = 0.5f;
+    public float fireTime = 0.1f;
+    public int count = 10;
     public GameObject bulletPrefab;
     public float rangeRandomSize;
 
+    public bool isPoolSimplyEnable;
+
     private void Fire()
     {
-        GameObject bullet = this.InstantiateInPool(bulletPrefab);
-        bullet.transform.position = GetSpawnPosition(gameObject.transform.position);
+        for (int i = 0; i < count; i++)
+        {
+            GameObject bullet;
+            if(isPoolSimplyEnable){
+                bullet = this.InstantiateInPool(bulletPrefab);
+            }else{
+                bullet = Instantiate(bulletPrefab);
+            }
+            bullet.transform.position = GetSpawnPosition(gameObject.transform.position);
+        }
     }
 
     private Vector3 GetSpawnPosition(Vector3 vector3)

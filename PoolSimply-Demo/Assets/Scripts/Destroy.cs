@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Destroy : MonoBehaviour {
 
+    public bool isPoolSimplyEnable;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        this.DestroyInPool(collision.gameObject);
+        if(isPoolSimplyEnable){
+            this.DestroyInPool(collision.gameObject);
+        }else{
+            Destroy(collision.gameObject);
+        }
+        
     }
     
 }

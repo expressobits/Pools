@@ -11,7 +11,7 @@ namespace ExpressoBits.PoolSimply.Editor
         private void SetIcons()
         {
             // this sets the icon on the game object containing our behaviour
-            //(target as Pooler).gameObject.SetIcon("Floater", Properties.Resources.Floater);
+            (target as Pooler).gameObject.SetIcon("Floater", Properties.Resources.Floater);
 
             // this sets the icon on the script (which normally shows the blank page icon)
             MonoScript.FromMonoBehaviour(target as Pooler).SetIcon("Floater", Properties.Resources.Floater);
