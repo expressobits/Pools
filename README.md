@@ -1,5 +1,5 @@
 #  PoolSimply 
-![PoolersComponent](https://github.com/ExpressoBits/PoolSimply/blob/master/PoolSimply-Editor/Resources/Pool.png)
+![PoolersComponent](https://github.com/ExpressoBits/PoolSimply/blob/master/Assets/3rd-Party/Expresso%20Bits/PoolSimply/Textures/Editor/Pool.png)
 Unity performance issues generating and destroying multiple objects?
 This simple library solves your problem in a simple way. With few steps your object can be reused several times, avoiding the *garbage collector*.
 
