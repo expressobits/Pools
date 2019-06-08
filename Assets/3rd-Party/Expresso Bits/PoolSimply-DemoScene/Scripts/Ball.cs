@@ -4,7 +4,7 @@ using UnityEngine;
 using ExpressoBits.PoolSimply;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Bullet : MonoBehaviour,IPooler {
+public class Ball : MonoBehaviour,IPooler {
     
     private Rigidbody2D rb;
 

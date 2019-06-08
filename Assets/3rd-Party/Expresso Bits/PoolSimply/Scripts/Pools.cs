@@ -13,9 +13,6 @@ namespace ExpressoBits.PoolSimply
     [AddComponentMenu("PoolSimply/Pools")]
     public class Pools : MonoBehaviour
     {
-        #region Singleton
-        public static Pools Instance;
-        #endregion
 
         #region Data
         private List<string> keys;
@@ -26,7 +23,6 @@ namespace ExpressoBits.PoolSimply
         {
             keys = new List<string>();
             poolDictionary = new Dictionary<string, Queue<GameObject>>();
-            Instance = this;
         }
 
         #region EnqueueAndDequeue
@@ -36,8 +32,6 @@ namespace ExpressoBits.PoolSimply
         public void Enqueue(GameObject prefab)
         {
             Pooler poolerComponent = prefab.GetComponent<Pooler>();
-
-
 
             #region CheckDictionaryExists
             if (!poolDictionary.ContainsKey(poolerComponent.id))
