@@ -7,24 +7,21 @@ public class Spawn : MonoBehaviour
 {
     public float fireTime = 0.1f;
     public int count = 10;
-    public GameObject ballPrefab;
     public float rangeRandomSize;
 
-    public Pools pools;
+    public GameObject ballPrefab;
 
-    public bool isPoolSimplyEnable;
+    public Pool pool;
 
     private void Fire()
     {
         for (int i = 0; i < count; i++)
         {
             GameObject bullet;
-            if(isPoolSimplyEnable){
-                bullet = this.InstantiateInPool(ballPrefab,pools);
-            }else{
-                bullet = Instantiate(ballPrefab);
-            }
-            bullet.transform.position = GetSpawnPosition(gameObject.transform.position);
+            bullet = this.InstantiateInPool(ballPrefab,
+                GetSpawnPosition(gameObject.transform.position),
+                Quaternion.identity,
+                pool);
         }
     }
 

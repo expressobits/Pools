@@ -144,11 +144,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTime: 0.1
   count: 100
+  rangeRandomSize: 10
   ballPrefab: {fileID: 7853038111363100907, guid: c1aac7534773eb84db0c3fbb98a008ec,
     type: 3}
-  rangeRandomSize: 10
-  pools: {fileID: 1121695096}
-  isPoolSimplyEnable: 1
+  pool: {fileID: 1121695096}
 --- !u!4 &512105029
 Transform:
   m_ObjectHideFlags: 0
@@ -317,7 +316,7 @@ GameObject:
   - component: {fileID: 1121695095}
   - component: {fileID: 1121695096}
   m_Layer: 0
-  m_Name: BallsPools
+  m_Name: BallPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,6 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e637315e8d0b394593ee988ac0ba667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poolsData: {fileID: 11400000, guid: ab98ed8fdb41ac64ca47d112b532706b, type: 2}
 --- !u!1 &1708919691
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,8 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a8b687bbac1ee45bb6cfb7aa10d7d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPoolSimplyEnable: 1
-  pools: {fileID: 1121695096}
+  pool: {fileID: 1121695096}
 --- !u!4 &1708919694
 Transform:
   m_ObjectHideFlags: 0

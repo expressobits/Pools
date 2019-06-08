@@ -4,26 +4,20 @@ using ExpressoBits.PoolSimply;
 
 public static class ExtensionMethods
 {
-    public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject)
+    public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject, Pool pool)
     {
-        Pools pools = gameObject.GetComponent<Pooler>().pools;
-        return InstantiateInPool(value,gameObject,pools);
+        return pool.Dequeue(gameObject);
     }
 
-    public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject)
+    public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject, 
+    Vector3 position, Quaternion rotation, Pool pool)
     {
-        Pools pools = gameObject.GetComponent<Pooler>().pools;
-        DestroyInPool(value,gameObject,pools);
+        return pool.Dequeue(gameObject,position,rotation);
     }
 
-    public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject, Pools pools)
+    public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject, Pool pool)
     {
-        return pools.Dequeue(gameObject);
-    }
-
-    public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject, Pools pools)
-    {
-        pools.Enqueue(gameObject);
+        pool.Enqueue(gameObject);
     }
 
 }

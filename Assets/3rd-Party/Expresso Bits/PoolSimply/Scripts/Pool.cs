@@ -10,11 +10,12 @@ namespace ExpressoBits.PoolSimply
      * This class is static and is used by the MonoBehaviour Instantiate and Destroy method extenders
      * 
      **/
-    [AddComponentMenu("PoolSimply/Pools")]
-    public class Pools : MonoBehaviour
+    [AddComponentMenu("PoolSimply/Pool")]
+    public class Pool : MonoBehaviour
     {
 
         #region Data
+        public PoolsData poolsData;
         private Queue<GameObject> objects;
         #endregion
 
@@ -46,31 +47,25 @@ namespace ExpressoBits.PoolSimply
         {
 
             Pooler pooler = prefab.GetComponent<Pooler>();
-
-            #region CheckIfDictionaryExist
-            if (objects == null)
-            {
-                objects = new Queue<GameObject>();
-                InstantiateAmount(objects, prefab, pooler.initialAmount);
-            }
-            #endregion
+            PoolsData poolsData = pooler.poolsData;
 
             if (objects.Count == 0)
             {
-                if (!pooler.willGrow)
+                /* if (!poolsData.willGrow)
                 {
                     Debug.LogWarning("Request from pool of object pools :" + name + " return null because overflow initial amount,you check 'Will Grow'?");
-                    return null;
+                    return Instantiate(prefab);
                 }
-                InstantiateAmount(objects, prefab, pooler.initialAmount);
+                */
+                InstantiateAmount(objects, prefab, poolsData.initialAmount);
             }
             GameObject gameObject = objects.Dequeue();
 
             #region TriggerComponent
             OnPoolerEnable(gameObject);
+            gameObject.SetActive(true);
             #endregion
 
-            gameObject.SetActive(true);
             return gameObject;
         }
         #endregion

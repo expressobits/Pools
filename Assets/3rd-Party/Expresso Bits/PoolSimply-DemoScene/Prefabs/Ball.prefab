@@ -144,11 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c57bee45aa71b24fb48c42644aa19c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: hello
-  initialAmount: 20
-  willGrow: 1
-  increaseAmount: 5
-  pools: {fileID: 165777539711567151, guid: d9d8c1ae1eeae404c9c1fbad4395d67d, type: 3}
+  poolsData: {fileID: 11400000, guid: ab98ed8fdb41ac64ca47d112b532706b, type: 2}
   OnEnableFromPool:
     m_PersistentCalls:
       m_Calls: []
