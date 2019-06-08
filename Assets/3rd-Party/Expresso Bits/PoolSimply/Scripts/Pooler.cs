@@ -12,6 +12,8 @@ namespace ExpressoBits.PoolSimply
         public bool willGrow;
         public int increaseAmount;
 
+        public Pools pools;
+
         [Header("Events")]
         public UnityEvent OnEnableFromPool;
         public UnityEvent OnDisableFromPool;

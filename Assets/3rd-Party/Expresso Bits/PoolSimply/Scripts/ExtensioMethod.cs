@@ -6,12 +6,14 @@ public static class ExtensionMethods
 {
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject)
     {
-        return Pools.Instance.Dequeue(gameObject);
+        Pools pools = value.GetComponent<Pooler>().pools;
+        return pools.Dequeue(gameObject);
     }
 
     public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject)
     {
-        Pools.Instance.Enqueue(gameObject);
+        Pools pools = value.GetComponent<Pooler>().pools;
+        pools.Enqueue(gameObject);
     }
 
 }
