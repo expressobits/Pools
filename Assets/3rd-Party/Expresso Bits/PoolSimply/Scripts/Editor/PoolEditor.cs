@@ -12,7 +12,8 @@ namespace ExpressoBits.PoolSimply
         public override void OnInspectorGUI() {
             var pool = target as Pool;
             base.OnInspectorGUI();
-            if(pool.objects !=null){
+            
+            if(pool.objects != null){
                actualObjects = "In pool objects: "+pool.objects.Count;
             }else{
                 actualObjects = "In pool objects: 0";
@@ -23,11 +24,9 @@ namespace ExpressoBits.PoolSimply
                 pool.Clear();
                 Debug.Log("Clean all pools data!");
             }
-
+            
             EditorGUILayout.BeginVertical("box");
             EditorGUILayout.LabelField(actualObjects);
-            
-            
             EditorGUILayout.EndHorizontal(); 
         }
 

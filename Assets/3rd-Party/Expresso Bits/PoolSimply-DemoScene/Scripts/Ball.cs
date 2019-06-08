@@ -23,4 +23,5 @@ public class Ball : MonoBehaviour,IPooler {
     void Awake () {
         rb = GetComponent<Rigidbody2D>();
     }
+
 }

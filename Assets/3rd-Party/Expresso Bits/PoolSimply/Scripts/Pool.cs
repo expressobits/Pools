@@ -18,7 +18,6 @@ namespace ExpressoBits.PoolSimply
         public Queue<GameObject> objects;
         #endregion
         
-
         private void Start() {
             objects = new Queue<GameObject>();
         }
@@ -27,14 +26,10 @@ namespace ExpressoBits.PoolSimply
         /**
          * Add to queue prefab and set object disabled
          **/
-        public void Enqueue(GameObject prefab)
+        public void Enqueue(GameObject obj)
         {
-            #region TriggerComponent
-            OnPoolerDisable(prefab);
-            #endregion
-
-            prefab.SetActive(false);
-            objects.Enqueue(prefab);
+            OnPoolerDisable(obj);
+            objects.Enqueue(obj);
         }
 
         /**
@@ -42,35 +37,24 @@ namespace ExpressoBits.PoolSimply
          **/
         public GameObject Dequeue(GameObject prefab)
         {
-
-            Pooler pooler = prefab.GetComponent<Pooler>();
-            PoolsData poolsData = pooler.poolsData;
-
-            GameObject gameObject;
-
+            GameObject obj;
             if (objects.Count == 0){
-                gameObject = Instantiate(prefab);
-            }else{
-                gameObject = objects.Dequeue();
+                InstantiateAmount(objects,prefab,10);
+                Debug.Log("Vazio");
             }
-                
-            #region TriggerComponent
-            OnPoolerEnable(gameObject);
-            gameObject.SetActive(true);
-            #endregion
-
-            return gameObject;
+            obj = objects.Dequeue();
+            OnPoolerEnable(obj);
+            return obj;
         }
-        #endregion
-
-        #region Utils
+        
         public GameObject Dequeue(GameObject prefab, Vector3 position, Quaternion rotation)
         {
-            GameObject gameObject = Dequeue(prefab);
-            gameObject.transform.position = position;
-            gameObject.transform.rotation = rotation;
-            return gameObject;
+            GameObject obj = Dequeue(prefab);
+            obj.transform.position = position;
+            obj.transform.rotation = rotation;
+            return obj;
         }
+        #endregion
 
         /**
          * Instance amount gameobjects in queue first params
@@ -85,8 +69,7 @@ namespace ExpressoBits.PoolSimply
             }
         }
 
-
-
+        #region Utils
         public void Clear()
         {
             int count = objects.Count;
@@ -101,6 +84,7 @@ namespace ExpressoBits.PoolSimply
 
         public void OnPoolerEnable(GameObject obj)
         {
+            obj.SetActive(true);
             foreach (IPooler pooler in obj.GetComponents<IPooler>())
             {
                 pooler.OnPoolerEnable();
@@ -109,11 +93,16 @@ namespace ExpressoBits.PoolSimply
 
         public void OnPoolerDisable(GameObject obj)
         {
+            obj.SetActive(false);
             foreach (IPooler pooler in obj.GetComponents<IPooler>())
             {
                 pooler.OnPoolerDisable();
             }
         }
+        #endregion
+
+        #region Editor
+
         #endregion
     }
 }
