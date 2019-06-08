@@ -7,7 +7,6 @@ namespace ExpressoBits.PoolSimply
     [AddComponentMenu("PoolSimply/Pooler")]
     public class Pooler : MonoBehaviour, IPooler
     {
-        public string id = "test";
         public int initialAmount = 20;
         public bool willGrow = true;
         public int increaseAmount = 5;

@@ -15,40 +15,28 @@ namespace ExpressoBits.PoolSimply
     {
 
         #region Data
-        private List<string> keys;
-        private Dictionary<string, Queue<GameObject>> poolDictionary;
+        private Queue<GameObject> objects;
         #endregion
 
         private void Start()
         {
-            keys = new List<string>();
-            poolDictionary = new Dictionary<string, Queue<GameObject>>();
+            objects = new Queue<GameObject>();
         }
 
         #region EnqueueAndDequeue
         /**
-         * Add to queue prefab disabled
+         * Add to queue prefab and set object disabled
          **/
         public void Enqueue(GameObject prefab)
         {
             Pooler poolerComponent = prefab.GetComponent<Pooler>();
-
-            #region CheckDictionaryExists
-            if (!poolDictionary.ContainsKey(poolerComponent.id))
-            {
-                keys.Add(poolerComponent.id);
-                Debug.LogWarning("Pool enqueue with tag " + poolerComponent.id + "doesn't exist");
-                poolDictionary[poolerComponent.id] = new Queue<GameObject>();
-            }
-            #endregion
 
             #region TriggerComponent
             OnPoolerDisable(prefab);
             #endregion
 
             prefab.SetActive(false);
-            poolDictionary[poolerComponent.id].Enqueue(prefab);
-
+            objects.Enqueue(prefab);
         }
 
         /**
@@ -60,26 +48,23 @@ namespace ExpressoBits.PoolSimply
             Pooler pooler = prefab.GetComponent<Pooler>();
 
             #region CheckIfDictionaryExist
-            if (!poolDictionary.ContainsKey(pooler.id))
+            if (objects == null)
             {
-                Debug.LogWarning("Pool with tag " + pooler.id + " doesn't exist");
-                Queue<GameObject> gameObjects = new Queue<GameObject>();
-                InstantiateAmount(gameObjects, prefab, pooler.initialAmount);
-                poolDictionary.Add(pooler.id, gameObjects);
-                keys.Add(pooler.id);
+                objects = new Queue<GameObject>();
+                InstantiateAmount(objects, prefab, pooler.initialAmount);
             }
             #endregion
 
-            if (poolDictionary[pooler.id].Count == 0)
+            if (objects.Count == 0)
             {
                 if (!pooler.willGrow)
                 {
-                    Debug.LogWarning("Request from pool of object pooler id:" + pooler.id + " return null because overflow initial amount,you check 'Will Grow'?");
+                    Debug.LogWarning("Request from pool of object pools :" + name + " return null because overflow initial amount,you check 'Will Grow'?");
                     return null;
                 }
-                InstantiateAmount(poolDictionary[pooler.id], prefab, pooler.initialAmount);
+                InstantiateAmount(objects, prefab, pooler.initialAmount);
             }
-            GameObject gameObject = poolDictionary[pooler.id].Dequeue();
+            GameObject gameObject = objects.Dequeue();
 
             #region TriggerComponent
             OnPoolerEnable(gameObject);
@@ -114,34 +99,25 @@ namespace ExpressoBits.PoolSimply
 
         public void DestroyAllObjects(string key)
         {
-            int count = poolDictionary[key].Count;
+            int count = objects.Count;
             for (int i = 0; i < count; i++)
             {
-                GameObject obj = poolDictionary[key].Dequeue();
+                GameObject obj = objects.Dequeue();
                 Destroy(obj);
                 Debug.Log("Destruido obj");
             }
-            poolDictionary.Remove(key);
         }
 
         public void Clear()
         {
-            foreach (string key in keys)
+            int count = objects.Count;
+            for (int i = 0; i < count; i++)
             {
-                DestroyAllObjects(key);
+                GameObject obj = objects.Dequeue();
+                Destroy(obj);
+                Debug.Log("Destruido obj");
             }
-            keys.Clear();
-            poolDictionary.Clear();
-        }
-
-        public List<string> getKeys()
-        {
-            return keys;
-        }
-
-        public int CountOfKey(string key)
-        {
-            return poolDictionary[key].Count;
+            objects.Clear();
         }
 
         public void OnPoolerEnable(GameObject obj)
