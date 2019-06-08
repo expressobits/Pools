@@ -15,12 +15,11 @@ namespace ExpressoBits.PoolSimply
     {
 
         #region Data
-        public PoolsData poolsData;
-        private Queue<GameObject> objects;
+        public Queue<GameObject> objects;
         #endregion
+        
 
-        private void Start()
-        {
+        private void Start() {
             objects = new Queue<GameObject>();
         }
 
@@ -30,8 +29,6 @@ namespace ExpressoBits.PoolSimply
          **/
         public void Enqueue(GameObject prefab)
         {
-            Pooler poolerComponent = prefab.GetComponent<Pooler>();
-
             #region TriggerComponent
             OnPoolerDisable(prefab);
             #endregion
@@ -49,18 +46,14 @@ namespace ExpressoBits.PoolSimply
             Pooler pooler = prefab.GetComponent<Pooler>();
             PoolsData poolsData = pooler.poolsData;
 
-            if (objects.Count == 0)
-            {
-                /* if (!poolsData.willGrow)
-                {
-                    Debug.LogWarning("Request from pool of object pools :" + name + " return null because overflow initial amount,you check 'Will Grow'?");
-                    return Instantiate(prefab);
-                }
-                */
-                InstantiateAmount(objects, prefab, poolsData.initialAmount);
-            }
-            GameObject gameObject = objects.Dequeue();
+            GameObject gameObject;
 
+            if (objects.Count == 0){
+                gameObject = Instantiate(prefab);
+            }else{
+                gameObject = objects.Dequeue();
+            }
+                
             #region TriggerComponent
             OnPoolerEnable(gameObject);
             gameObject.SetActive(true);
@@ -92,16 +85,7 @@ namespace ExpressoBits.PoolSimply
             }
         }
 
-        public void DestroyAllObjects(string key)
-        {
-            int count = objects.Count;
-            for (int i = 0; i < count; i++)
-            {
-                GameObject obj = objects.Dequeue();
-                Destroy(obj);
-                Debug.Log("Destruido obj");
-            }
-        }
+
 
         public void Clear()
         {
@@ -110,7 +94,7 @@ namespace ExpressoBits.PoolSimply
             {
                 GameObject obj = objects.Dequeue();
                 Destroy(obj);
-                Debug.Log("Destruido obj");
+                Debug.Log("Destroy object");
             }
             objects.Clear();
         }

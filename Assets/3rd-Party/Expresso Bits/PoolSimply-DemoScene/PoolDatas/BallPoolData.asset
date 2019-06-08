@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BallPoolData
   m_EditorClassIdentifier: 
   onlyStableConfigurations: 1
-  initialAmount: 1
-  increaseAmount: 5
+  initialAmount: 10
+  increaseAmount: 20
   willGrow: 1
   maxAmountObjects: 50

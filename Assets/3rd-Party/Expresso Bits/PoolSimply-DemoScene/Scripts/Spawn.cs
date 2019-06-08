@@ -17,8 +17,7 @@ public class Spawn : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            GameObject bullet;
-            bullet = this.InstantiateInPool(ballPrefab,
+            this.InstantiateInPool(ballPrefab,
                 GetSpawnPosition(gameObject.transform.position),
                 Quaternion.identity,
                 pool);
