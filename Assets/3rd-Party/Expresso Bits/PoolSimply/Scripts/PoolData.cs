@@ -2,11 +2,10 @@ using UnityEngine;
 
 namespace ExpressoBits.PoolSimply
 {
-    [CreateAssetMenu(fileName = "PoolsData", menuName = "ExpressoBits/PoolSimply/PoolsData", order = 0)]
-    public class PoolsData : ScriptableObject 
+    [CreateAssetMenu(fileName = "PoolData", menuName = "ExpressoBits/PoolSimply/PoolData", order = 0)]
+    public class PoolData : ScriptableObject 
     {
 
-        public bool onlyStableConfigurations = true;
         public int initialAmount = 20;
         public int increaseAmount = 5;
 

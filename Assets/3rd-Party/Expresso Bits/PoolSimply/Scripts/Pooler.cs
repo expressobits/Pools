@@ -8,7 +8,7 @@ namespace ExpressoBits.PoolSimply
     public class Pooler : MonoBehaviour, IPooler
     {
         
-        public PoolsData poolsData;
+        public Pool pool;
 
         [Header("Events")]
         public UnityEvent OnEnableFromPool;

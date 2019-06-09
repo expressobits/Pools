@@ -15,6 +15,7 @@ namespace ExpressoBits.PoolSimply
     {
 
         #region Data
+        public PoolData poolData;
         public Queue<GameObject> objects;
         #endregion
         

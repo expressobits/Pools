@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c57bee45aa71b24fb48c42644aa19c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolsData: {fileID: 11400000, guid: ab98ed8fdb41ac64ca47d112b532706b, type: 2}
+  pool: {fileID: 0}
   OnEnableFromPool:
     m_PersistentCalls:
       m_Calls: []

@@ -24,6 +24,11 @@ public static class ExtensionMethods
         }
     }
 
+    public static void DestroyInPool(this MonoBehaviour value,GameObject gameObject){
+        Pooler pooler = gameObject.GetComponent<Pooler>();
+        DestroyInPool(value,gameObject,pooler.pool);
+    }
+
     public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject, Pool pool)
     {
         if(pool.enabled){
