@@ -5,9 +5,16 @@ using ExpressoBits.PoolSimply;
 
 public class Destroy : MonoBehaviour {
 
+    public bool isEnablePool;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        this.DestroyInPool(collision.gameObject);
+        if(isEnablePool){
+            this.DestroyInPool(collision.gameObject);
+        }else{
+            Destroy(collision.gameObject);
+        }
+        
     }
     
 }

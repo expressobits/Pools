@@ -5,6 +5,8 @@ using ExpressoBits.PoolSimply;
 
 public class Spawn : MonoBehaviour
 {
+
+    public bool isEnablePool;
     public float fireTime = 0.1f;
     public int count = 10;
     public float rangeRandomSize;
@@ -16,13 +18,24 @@ public class Spawn : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            this.InstantiateInPool(ballPrefab,
-                GetSpawnPosition(gameObject.transform.position),
-                Quaternion.identity);
+            if(isEnablePool){
+                this.InstantiateInPool(ballPrefab,
+                    GetSpawnPosition(gameObject.transform.position),
+                    Quaternion.identity);
 
                 this.InstantiateInPool(stonePrefab,
-                GetSpawnPosition(gameObject.transform.position),
-                Quaternion.identity);
+                    GetSpawnPosition(gameObject.transform.position),
+                    Quaternion.identity);
+            }else{
+                Instantiate(ballPrefab,
+                    GetSpawnPosition(gameObject.transform.position),
+                    Quaternion.identity);
+
+                Instantiate(stonePrefab,
+                    GetSpawnPosition(gameObject.transform.position),
+                    Quaternion.identity);
+            }
+            
         }
     }
 

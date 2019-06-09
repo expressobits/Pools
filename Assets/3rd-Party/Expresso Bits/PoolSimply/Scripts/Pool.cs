@@ -37,12 +37,7 @@ namespace ExpressoBits.PoolSimply
         public void Enqueue(GameObject obj)
         {
             OnPoolerDisable(obj);
-            //FIXME problem performance verification enable
-            if(enabled){
-                objects.Enqueue(obj);
-            }else{
-                Destroy(obj);
-            }
+            objects.Enqueue(obj);
             
         }
 
@@ -52,17 +47,14 @@ namespace ExpressoBits.PoolSimply
         public GameObject Dequeue(GameObject prefab)
         {
             GameObject obj;
-            //FIXME problem performance verification enable
-            if(enabled){
-                //TODO Make this more efficiely
-                if (objects.Count == 0){
-                    InstantiateAmount(objects,prefab,poolData.increaseAmount);
-                }
-                obj = objects.Dequeue();
-                
-            }else{
-                obj = Instantiate(prefab);
+
+            //TODO Make this more efficiely
+            if (objects.Count == 0){
+                InstantiateAmount(objects,prefab,poolData.increaseAmount);
             }
+            obj = objects.Dequeue();
+                
+            
             OnPoolerEnable(obj);
             return obj;
             
