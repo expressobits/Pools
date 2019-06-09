@@ -10,8 +10,7 @@ public class Spawn : MonoBehaviour
     public float rangeRandomSize;
 
     public GameObject ballPrefab;
-
-    public Pool pool;
+    public GameObject stonePrefab;
 
     private void Fire()
     {
@@ -19,8 +18,11 @@ public class Spawn : MonoBehaviour
         {
             this.InstantiateInPool(ballPrefab,
                 GetSpawnPosition(gameObject.transform.position),
-                Quaternion.identity,
-                pool);
+                Quaternion.identity);
+
+                this.InstantiateInPool(stonePrefab,
+                GetSpawnPosition(gameObject.transform.position),
+                Quaternion.identity);
         }
     }
 

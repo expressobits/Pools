@@ -12,8 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c528463f17bcdb409f2f4cf0f6aecaa, type: 3}
   m_Name: PoolData
   m_EditorClassIdentifier: 
-  onlyStableConfigurations: 1
-  initialAmount: 20
   increaseAmount: 5
-  willGrow: 1
-  maxAmountObjects: 50

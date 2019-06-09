@@ -18,7 +18,12 @@ namespace ExpressoBits.PoolSimply
         public PoolData poolData;
         public Queue<GameObject> objects  = new Queue<GameObject>();
         private Pooler pooler;
+        public GameObject prefab;
         #endregion
+
+        private void Awake() {
+            Pools.RegisterPoolPrefab(prefab,this);
+        }
 
         
         private void OnDisable() {
@@ -32,7 +37,13 @@ namespace ExpressoBits.PoolSimply
         public void Enqueue(GameObject obj)
         {
             OnPoolerDisable(obj);
-            objects.Enqueue(obj);
+            //FIXME problem performance verification enable
+            if(enabled){
+                objects.Enqueue(obj);
+            }else{
+                Destroy(obj);
+            }
+            
         }
 
         /**
@@ -41,13 +52,20 @@ namespace ExpressoBits.PoolSimply
         public GameObject Dequeue(GameObject prefab)
         {
             GameObject obj;
-            //TODO Make this more efficiely
-            if (objects.Count == 0){
-                InstantiateAmount(objects,prefab,poolData.increaseAmount);
+            //FIXME problem performance verification enable
+            if(enabled){
+                //TODO Make this more efficiely
+                if (objects.Count == 0){
+                    InstantiateAmount(objects,prefab,poolData.increaseAmount);
+                }
+                obj = objects.Dequeue();
+                
+            }else{
+                obj = Instantiate(prefab);
             }
-            obj = objects.Dequeue();
             OnPoolerEnable(obj);
             return obj;
+            
         }
         
         public GameObject Dequeue(GameObject prefab, Vector3 position, Quaternion rotation)
@@ -66,7 +84,7 @@ namespace ExpressoBits.PoolSimply
         {
             for (int i = 0; i < amount; i++)
             {
-                GameObject gameObject = Instantiate(prefab);
+                GameObject gameObject = GameObject.Instantiate(prefab);
                 gameObject.SetActive(false);
                 gameObjects.Enqueue(gameObject);
             }
@@ -77,7 +95,7 @@ namespace ExpressoBits.PoolSimply
         {
             foreach (GameObject obj in objects)
             {
-                Destroy(obj);
+                Destroy((Object)obj);
             }
             objects.Clear();
         }
