@@ -40,8 +40,7 @@ namespace ExpressoBits.PoolSimply
         {
             GameObject obj;
             if (objects.Count == 0){
-                InstantiateAmount(objects,prefab,10);
-                Debug.Log("Vazio");
+                InstantiateAmount(objects,prefab,poolData.increaseAmount);
             }
             obj = objects.Dequeue();
             OnPoolerEnable(obj);
