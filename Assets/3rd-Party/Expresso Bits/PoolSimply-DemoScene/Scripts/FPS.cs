@@ -1,9 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class FPS : MonoBehaviour
 {
     float deltaTime = 0.0f;
+
+    private Text FPSText;
+
+    private void Awake() {
+        FPSText = GetComponent<Text>();
+    }
 
     void Update()
     {
@@ -22,7 +29,7 @@ public class FPS : MonoBehaviour
         style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
         float msec = deltaTime * 1000.0f;
         float fps = 1.0f / deltaTime;
-        string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
-        GUI.Label(rect, text, style);
+        string text = string.Format("{0:000.0} MS {1:0.} FPS", msec, fps);
+        FPSText.text = text;
     }
 }
