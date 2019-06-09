@@ -7,7 +7,6 @@ public static class ExtensionMethods
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject)
     {
         return Pools.Instantiate(gameObject);
-        
     }
 
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject, 
