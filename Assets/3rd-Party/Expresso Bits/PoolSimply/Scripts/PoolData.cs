@@ -6,12 +6,13 @@ namespace ExpressoBits.PoolSimply
     public class PoolData : ScriptableObject 
     {
 
-        public int initialAmount = 20;
+        
         public int increaseAmount = 5;
 
-        [Header("Unstable configurations")]
-        public bool willGrow = true;
-        public int maxAmountObjects = 50;
+        // [Header("Unstable configurations")]
+        // public int initialAmount = 20;
+        // public bool willGrow = true;
+        // public int maxAmountObjects = 50;
 
     }
 }

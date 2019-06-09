@@ -16,11 +16,13 @@ namespace ExpressoBits.PoolSimply
 
         #region Data
         public PoolData poolData;
-        public Queue<GameObject> objects;
+        public Queue<GameObject> objects  = new Queue<GameObject>();
+        private Pooler pooler;
         #endregion
+
         
-        private void Start() {
-            objects = new Queue<GameObject>();
+        private void OnDisable() {
+            Clear();
         }
 
         #region EnqueueAndDequeue
@@ -39,6 +41,7 @@ namespace ExpressoBits.PoolSimply
         public GameObject Dequeue(GameObject prefab)
         {
             GameObject obj;
+            //TODO Make this more efficiely
             if (objects.Count == 0){
                 InstantiateAmount(objects,prefab,poolData.increaseAmount);
             }
@@ -72,15 +75,13 @@ namespace ExpressoBits.PoolSimply
         #region Utils
         public void Clear()
         {
-            int count = objects.Count;
-            for (int i = 0; i < count; i++)
+            foreach (GameObject obj in objects)
             {
-                GameObject obj = objects.Dequeue();
                 Destroy(obj);
-                Debug.Log("Destroy object");
             }
             objects.Clear();
         }
+        
 
         public void OnPoolerEnable(GameObject obj)
         {
