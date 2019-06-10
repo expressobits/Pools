@@ -25,6 +25,10 @@ namespace ExpressoBits.PoolSimply
             Pools.Instance().RegisterPoolPrefab(prefab,this);
         }
 
+        private void Start() {
+            InstantiateAmount(objects,prefab,poolData.initialIncrease);
+        }
+
         
         private void OnDisable() {
             Clear();
