@@ -22,7 +22,7 @@ namespace ExpressoBits.PoolSimply
         #endregion
 
         private void Awake() {
-            Pools.RegisterPoolPrefab(prefab,this);
+            Pools.Instance().RegisterPoolPrefab(prefab,this);
         }
 
         
