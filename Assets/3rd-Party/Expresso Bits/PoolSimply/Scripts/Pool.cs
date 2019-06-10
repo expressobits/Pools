@@ -41,6 +41,10 @@ namespace ExpressoBits.PoolSimply
             
         }
 
+        public void Instantiate(){
+            Dequeue(prefab);
+        }
+
         /**
          * Get object from queue with prefab model, if no exist
          **/
