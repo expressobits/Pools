@@ -72,6 +72,7 @@ namespace ExpressoBits.PoolSimply
             return obj;
         }
         #endregion
+        
 
         /**
          * Instance amount gameobjects in queue first params
@@ -94,6 +95,10 @@ namespace ExpressoBits.PoolSimply
                 Destroy((Object)obj);
             }
             objects.Clear();
+        }
+
+        public void IncreaseAmount(){
+            InstantiateAmount(objects,prefab,poolData.increaseAmount);
         }
         
 
