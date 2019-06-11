@@ -17,7 +17,6 @@ namespace ExpressoBits.PoolSimply
         #region Data
         public PoolData poolData;
         public Queue<GameObject> objects  = new Queue<GameObject>();
-        private Pooler pooler;
         public GameObject prefab;
         #endregion
 
