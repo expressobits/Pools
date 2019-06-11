@@ -6,10 +6,10 @@ namespace ExpressoBits.PoolSimply
     public class PoolData : ScriptableObject 
     {
 
-        [SerializeField] [Range(8,256)] [Tooltip("Amount of a batch of gameObjects after there are no items in the pool")]
-        public short increaseAmount = 32;
-        [SerializeField] [Range(8,256)] [Tooltip("Amount instantiated and saved as soon as the pool is started")]
-        public short initialIncrease = 32;
+        [SerializeField] [Range(8,255)] [Tooltip("Amount of a batch of gameObjects after there are no items in the pool")]
+        public byte increaseAmount = 32;
+        [SerializeField] [Range(8,255)] [Tooltip("Amount instantiated and saved as soon as the pool is started")]
+        public byte initialIncrease = 32;
 
         // [Header("Unstable configurations")]
         // public bool willGrow = true;
