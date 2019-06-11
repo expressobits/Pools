@@ -17,12 +17,15 @@ namespace ExpressoBits.PoolSimply
         #region Data
         public PoolData poolData;
         public Queue<GameObject> objects  = new Queue<GameObject>();
-        private Pooler pooler;
         public GameObject prefab;
         #endregion
 
         private void Awake() {
             Pools.Instance().RegisterPoolPrefab(prefab,this);
+        }
+
+        private void Start() {
+            InstantiateAmount(objects,prefab,poolData.initialIncrease);
         }
 
         
