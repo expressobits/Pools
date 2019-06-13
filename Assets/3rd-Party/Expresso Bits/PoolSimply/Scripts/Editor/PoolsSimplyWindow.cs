@@ -51,7 +51,8 @@ public class PoolsSimplyWindow : EditorWindow {
                 Pools.Instance().pools.TryGetValue(key, out pool);
                 int count = pool.objects.Count;
                 GUILayout.BeginHorizontal();
-                DrawLineTable(logo,key+"",w1,count+"",w2,EditorStyles.label);
+                PoolData poolData = EditorUtility.InstanceIDToObject(key) as PoolData;
+                DrawLineTable(logo,poolData.name+"",w1,count+"",w2,EditorStyles.label);
                 if(GUILayout.Button("Clear")){
                     pool.Clear();
                 }
@@ -72,7 +73,7 @@ public class PoolsSimplyWindow : EditorWindow {
         GUILayout.Label(s2,style,GUILayout.Width(w2));
     }
 
-
+    //TODO dasdas
     private void DrawButtons(){
         GUILayout.BeginHorizontal();
         if(GUILayout.Button("Clear All")){

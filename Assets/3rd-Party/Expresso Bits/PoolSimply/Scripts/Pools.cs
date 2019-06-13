@@ -5,11 +5,11 @@ using System.Collections.Generic;
 namespace ExpressoBits.PoolSimply
 {
     //FIXME Problem on remove list on disable scene
+    //REVIEW Use pool 
     public class Pools{
 
         public static Pools instance;
         public List<int> ids = new List<int>();
-        public Dictionary<int,PoolData> poolDatas = new Dictionary<int,PoolData>();
         public Dictionary<int,Pool> pools = new Dictionary<int,Pool>();
 
         [RuntimeInitializeOnLoadMethod]
@@ -21,14 +21,14 @@ namespace ExpressoBits.PoolSimply
 
         public GameObject Instantiate(GameObject prefab){
             Pooler pooler = prefab.GetComponent<Pooler>();
-            
             Pool pool = GetPoolFromPrefab(prefab);
             return pool.Dequeue(prefab);
         }
 
         public GameObject Instantiate(GameObject prefab,Vector3 position,Quaternion rotation){
+            Pooler pooler = prefab.GetComponent<Pooler>();
             Pool pool = GetPoolFromPrefab(prefab);
-            return pool.Dequeue(position,rotation).gameObject;
+            return pool.Dequeue(prefab,position,rotation).gameObject;
         }
 
         public void Destroy(GameObject obj){
@@ -44,11 +44,12 @@ namespace ExpressoBits.PoolSimply
             if(!exist){
                 pool = new Pool(prefab,pooler.poolData);
                 pools.Add(id,pool);
-                poolDatas.Add(id,pooler.poolData);
                 ids.Add(id);
             }
             return pool;
         }
+
+
 
         #if UNITY_EDITOR
         public List<int> GetKeyList(){

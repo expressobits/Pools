@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ExpressoBits.PoolSimply
 {
-    [CreateAssetMenu(fileName = "PoolData", menuName = "ExpressoBits/PoolSimply/PoolData", order = 0)]
+    [CreateAssetMenu(fileName = "PoolData", menuName = "Pool/PoolData", order = 0)]
     public class PoolData : ScriptableObject 
     {
 
@@ -10,10 +10,13 @@ namespace ExpressoBits.PoolSimply
         public byte increaseAmount = 32;
         [SerializeField] [Range(8,255)] [Tooltip("Amount instantiated and saved as soon as the pool is started")]
         public byte initialIncrease = 32;
+        [SerializeField] [Tooltip("Color tag use to window pools")]
+        public Color color = Color.black;
 
         // [Header("Unstable configurations")]
         // public bool willGrow = true;
         // public int maxAmountObjects = 50;
+        
 
     }
 }

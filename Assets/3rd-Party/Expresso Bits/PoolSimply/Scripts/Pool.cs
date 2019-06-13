@@ -16,7 +16,6 @@ namespace ExpressoBits.PoolSimply
     {
 
         #region Data
-        [HideInInspector]
         public Queue<GameObject> objects  = new Queue<GameObject>();
         public GameObject prefab;
         private PoolData poolData;
@@ -39,8 +38,8 @@ namespace ExpressoBits.PoolSimply
             
         }
 
-        public void Instantiate(){
-            Dequeue(prefab);
+        public GameObject Instantiate(){
+            return Dequeue(prefab);
         }
 
         /**
@@ -58,7 +57,7 @@ namespace ExpressoBits.PoolSimply
             return obj;
         }
         
-        public GameObject Dequeue(Vector3 position, Quaternion rotation)
+        public GameObject Dequeue(GameObject prefab,Vector3 position, Quaternion rotation)
         {
             GameObject obj = Dequeue(prefab);
             obj.transform.position = position;
@@ -112,10 +111,6 @@ namespace ExpressoBits.PoolSimply
                 ipooler.OnPoolerDisable();
             }
         }
-
-        #endregion
-
-        #region Editor
 
         #endregion
     }
