@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   increaseAmount: 32
   initialIncrease: 255
-  color: {r: 0, g: 1, b: 0.015245914, a: 1}
+  color: {r: 0.07475969, g: 0.4528302, b: 0.07905599, a: 1}

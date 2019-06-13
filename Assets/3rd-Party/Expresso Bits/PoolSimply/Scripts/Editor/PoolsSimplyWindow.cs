@@ -24,6 +24,18 @@ public class PoolsSimplyWindow : EditorWindow {
         GUI.DrawTexture(new Rect(0, 0, maxSize.x, maxSize.y), tex, ScaleMode.StretchToFill);
         GUILayout.Label("Base Settings", EditorStyles.boldLabel);
         DrawStats();
+        
+        GUILayout.FlexibleSpace();
+        DrawInfo();
+    }
+
+    private void DrawInfo(){
+        EditorGUILayout.BeginVertical();
+        GUILayout.Label("GitHub",EditorStyles.boldLabel);
+        if(GUILayout.Button("https://github.com/ExpressoBits/PoolSimply")){
+            Application.OpenURL("https://github.com/ExpressoBits/PoolSimply");
+        }
+        EditorGUILayout.EndVertical();
     }
 
     private void DrawStats(){
@@ -39,7 +51,7 @@ public class PoolsSimplyWindow : EditorWindow {
             float w1=win*0.10f; float w2=win*0.20f; float w3=win*0.25f;
 
             GUILayout.BeginHorizontal();
-            DrawLineTable(logo,"Pooler",w1,"Objects",w2,EditorStyles.boldLabel);
+            DrawLineTable(logo,"Pooler",w1,"Objects",w2,EditorStyles.boldLabel,Color.black);
             GUILayout.Space(w3);
             GUILayout.Space(w3);
             GUILayout.EndHorizontal();
@@ -47,12 +59,13 @@ public class PoolsSimplyWindow : EditorWindow {
             for (int i = 0; i < Pools.Instance().ids.Count; i++)
             {
                 int key = Pools.Instance().ids[i];
+                PoolData poolData = EditorUtility.InstanceIDToObject(key) as PoolData;
+
                 Pool pool;
                 Pools.Instance().pools.TryGetValue(key, out pool);
                 int count = pool.objects.Count;
                 GUILayout.BeginHorizontal();
-                PoolData poolData = EditorUtility.InstanceIDToObject(key) as PoolData;
-                DrawLineTable(logo,poolData.name+"",w1,count+"",w2,EditorStyles.label);
+                DrawLineTable(logo,poolData.name+"",w1,count+"",w2,EditorStyles.label,poolData.color);
                 if(GUILayout.Button("Clear")){
                     pool.Clear();
                 }
@@ -67,9 +80,14 @@ public class PoolsSimplyWindow : EditorWindow {
         DrawButtons();
     }
 
-    private void DrawLineTable(Texture2D tex,string s1,float w1,string s2, float w2,GUIStyle style){
+    private void DrawLineTable(Texture2D tex,string s1,float w1,string s2, float w2,GUIStyle style,Color color){
+        
         GUILayout.Label(tex,GUILayout.Width(w1));
-        GUILayout.Label(s1,style,GUILayout.Width(w2));
+        GUIStyle styleTitle = EditorStyles.label;
+        Color lastcolor = styleTitle.normal.textColor;
+        styleTitle.normal.textColor = color;
+        GUILayout.Label(s1,styleTitle,GUILayout.Width(w2));
+        styleTitle.normal.textColor = lastcolor;
         GUILayout.Label(s2,style,GUILayout.Width(w2));
     }
 

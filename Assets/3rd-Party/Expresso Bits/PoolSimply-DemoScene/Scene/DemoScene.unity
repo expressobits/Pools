@@ -142,9 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98fab57623b13547a572ea47455d2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnablePool: 1
+  isEnablePool: 0
   fireTime: 0.1
-  count: 60
+  count: 1
   rangeRandomSize: 10
   ballPrefab: {fileID: 7853038111363100907, guid: c1aac7534773eb84db0c3fbb98a008ec,
     type: 3}
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a8b687bbac1ee45bb6cfb7aa10d7d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnablePool: 1
+  isEnablePool: 0
 --- !u!4 &1708919694
 Transform:
   m_ObjectHideFlags: 0
