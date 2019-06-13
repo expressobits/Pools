@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnablePool: 1
-  fireTime: 0.1
+  fireTime: 0.5
   count: 1
   rangeRandomSize: 10
   ballPrefab: {fileID: 7853038111363100907, guid: c1aac7534773eb84db0c3fbb98a008ec,
