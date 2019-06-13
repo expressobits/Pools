@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 
 namespace ExpressoBits.PoolSimply
@@ -11,26 +12,21 @@ namespace ExpressoBits.PoolSimply
      * 
      **/
     [AddComponentMenu("PoolSimply/Pool")]
-    public class Pool : MonoBehaviour
+    public class Pool
     {
 
         #region Data
-        public PoolData poolData;
+        [HideInInspector]
         public Queue<GameObject> objects  = new Queue<GameObject>();
         public GameObject prefab;
+        private PoolData poolData;
         #endregion
 
-        private void Awake() {
-            Pools.Instance().RegisterPoolPrefab(prefab,this);
-        }
 
-        private void Start() {
+        public Pool(GameObject prefab,PoolData poolData){
+            this.poolData = poolData;
+            this.prefab = prefab;
             InstantiateAmount(objects,prefab,poolData.initialIncrease);
-        }
-
-        
-        private void OnDisable() {
-            Clear();
         }
 
         #region EnqueueAndDequeue
@@ -54,20 +50,16 @@ namespace ExpressoBits.PoolSimply
         public GameObject Dequeue(GameObject prefab)
         {
             GameObject obj;
-
             //TODO Make this more efficiely
             if (objects.Count == 0){
                 InstantiateAmount(objects,prefab,poolData.increaseAmount);
             }
             obj = objects.Dequeue();
-                
-            
             OnPoolerEnable(obj);
             return obj;
-            
         }
         
-        public GameObject Dequeue(GameObject prefab, Vector3 position, Quaternion rotation)
+        public GameObject Dequeue(Vector3 position, Quaternion rotation)
         {
             GameObject obj = Dequeue(prefab);
             obj.transform.position = position;
@@ -80,13 +72,13 @@ namespace ExpressoBits.PoolSimply
         /**
          * Instance amount gameobjects in queue first params
          **/
-        private void InstantiateAmount(Queue<GameObject> gameObjects, GameObject prefab, int amount)
+        private void InstantiateAmount(Queue<GameObject> objects, GameObject prefab, int amount)
         {
             for (int i = 0; i < amount; i++)
             {
                 GameObject gameObject = GameObject.Instantiate(prefab);
                 gameObject.SetActive(false);
-                gameObjects.Enqueue(gameObject);
+                objects.Enqueue(gameObject);
             }
         }
 
@@ -95,7 +87,7 @@ namespace ExpressoBits.PoolSimply
         {
             foreach (GameObject obj in objects)
             {
-                Destroy((Object)obj);
+                GameObject.Destroy(obj);
             }
             objects.Clear();
         }
@@ -104,22 +96,21 @@ namespace ExpressoBits.PoolSimply
             InstantiateAmount(objects,prefab,poolData.increaseAmount);
         }
         
-
         public void OnPoolerEnable(GameObject obj)
         {
             obj.SetActive(true);
-            foreach (IPooler pooler in obj.GetComponents<IPooler>())
+            foreach (IPooler ipooler in obj.GetComponents<IPooler>())
             {
-                pooler.OnPoolerEnable();
+                ipooler.OnPoolerEnable();
             }
         }
 
         public void OnPoolerDisable(GameObject obj)
         {
             obj.SetActive(false);
-            foreach (IPooler pooler in obj.GetComponents<IPooler>())
+            foreach (IPooler ipooler in obj.GetComponents<IPooler>())
             {
-                pooler.OnPoolerDisable();
+                ipooler.OnPoolerDisable();
             }
         }
         #endregion

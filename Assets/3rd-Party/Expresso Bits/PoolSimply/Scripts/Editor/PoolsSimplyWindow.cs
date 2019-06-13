@@ -44,11 +44,11 @@ public class PoolsSimplyWindow : EditorWindow {
             GUILayout.Space(w3);
             GUILayout.EndHorizontal();
             
-            for (int i = 0; i < Pools.Instance().keys.Count; i++)
+            for (int i = 0; i < Pools.Instance().ids.Count; i++)
             {
-                string key = Pools.Instance().keys[i];
+                int key = Pools.Instance().ids[i];
                 Pool pool;
-                Pools.Instance().dictionary.TryGetValue(key, out pool);
+                Pools.Instance().pools.TryGetValue(key, out pool);
                 int count = pool.objects.Count;
                 GUILayout.BeginHorizontal();
                 DrawLineTable(logo,key+"",w1,count+"",w2,EditorStyles.label);
@@ -76,20 +76,20 @@ public class PoolsSimplyWindow : EditorWindow {
     private void DrawButtons(){
         GUILayout.BeginHorizontal();
         if(GUILayout.Button("Clear All")){
-            for (int i = 0; i < Pools.Instance().keys.Count; i++){
-                string key = Pools.Instance().keys[i];
+            for (int i = 0; i < Pools.Instance().ids.Count; i++){
+                int key = Pools.Instance().ids[i];
                 Pool pool;
-                if(Pools.Instance().dictionary.TryGetValue(key, out pool)){
+                if(Pools.Instance().pools.TryGetValue(key, out pool)){
                     pool.Clear();
                 }
                 
             }
         }
         if(GUILayout.Button("Increase All")){
-            for (int i = 0; i < Pools.Instance().keys.Count; i++){
-                string key = Pools.Instance().keys[i];
+            for (int i = 0; i < Pools.Instance().ids.Count; i++){
+                int key = Pools.Instance().ids[i];
                 Pool pool;
-                if(Pools.Instance().dictionary.TryGetValue(key, out pool)){
+                if(Pools.Instance().pools.TryGetValue(key, out pool)){
                     pool.IncreaseAmount();
                 }
                 

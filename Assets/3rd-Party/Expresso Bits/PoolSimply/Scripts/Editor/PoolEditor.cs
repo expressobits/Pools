@@ -10,7 +10,7 @@ namespace ExpressoBits.PoolSimply
         //TODO Update string actual objects
 
         public override void OnInspectorGUI() {
-            var pool = target as Pool;
+            var pool = new Pool(new GameObject(), new PoolData());//target as Pool;
             base.OnInspectorGUI();
             
             if(pool.objects != null){

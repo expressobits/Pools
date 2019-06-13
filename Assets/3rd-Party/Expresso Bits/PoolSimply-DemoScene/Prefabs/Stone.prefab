@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c57bee45aa71b24fb48c42644aa19c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: Stone
+  poolData: {fileID: 11400000, guid: 2fbf986b4a8898e4ea888d08b112b3e3, type: 2}
   OnEnableFromPool:
     m_PersistentCalls:
       m_Calls: []
