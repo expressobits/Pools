@@ -22,7 +22,8 @@ public class PoolsSimplyWindow : EditorWindow {
         tex.SetPixel(0, 0, new Color(1f, 0.8f, 0.1f));
         tex.Apply();
         GUI.DrawTexture(new Rect(0, 0, maxSize.x, maxSize.y), tex, ScaleMode.StretchToFill);
-        GUILayout.Label("Base Settings", EditorStyles.boldLabel);
+        GUILayout.Label("Pools", EditorStyles.centeredGreyMiniLabel);
+
         DrawStats();
         
         GUILayout.FlexibleSpace();
@@ -32,7 +33,7 @@ public class PoolsSimplyWindow : EditorWindow {
     private void DrawInfo(){
         EditorGUILayout.BeginVertical();
         GUILayout.Label("GitHub",EditorStyles.boldLabel);
-        if(GUILayout.Button("https://github.com/ExpressoBits/PoolSimply")){
+        if(GUILayout.Button("https://github.com/ExpressoBits/PoolSimply >>>")){
             Application.OpenURL("https://github.com/ExpressoBits/PoolSimply");
         }
         EditorGUILayout.EndVertical();

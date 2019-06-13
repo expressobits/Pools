@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98fab57623b13547a572ea47455d2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnablePool: 0
+  isEnablePool: 1
   fireTime: 0.1
   count: 1
   rangeRandomSize: 10
@@ -206,7 +206,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 22, y: 2}
+  m_Size: {x: 25, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a8b687bbac1ee45bb6cfb7aa10d7d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isEnablePool: 0
+  isEnablePool: 1
 --- !u!4 &1708919694
 Transform:
   m_ObjectHideFlags: 0
