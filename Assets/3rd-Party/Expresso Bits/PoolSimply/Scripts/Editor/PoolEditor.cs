@@ -10,24 +10,24 @@ namespace ExpressoBits.PoolSimply
         //TODO Update string actual objects
 
         public override void OnInspectorGUI() {
-            var pool = new Pool(new GameObject(), new PoolData());//target as Pool;
-            base.OnInspectorGUI();
+            // //var pool = new Pool(new GameObject(), new PoolData());//target as Pool;
+            // base.OnInspectorGUI();
             
-            if(pool.objects != null){
-               actualObjects = "In pool objects: "+pool.objects.Count;
-            }else{
-                actualObjects = "In pool objects: 0";
-            }
+            // if(pool.objects != null){
+            //    actualObjects = "In pool objects: "+pool.objects.Count;
+            // }else{
+            //     actualObjects = "In pool objects: 0";
+            // }
 
-            if (GUILayout.Button("Clean Pools Data"))
-            {
-                pool.Clear();
-                Debug.Log("Clean all pools data!");
-            }
+            // if (GUILayout.Button("Clean Pools Data"))
+            // {
+            //     pool.Clear();
+            //     Debug.Log("Clean all pools data!");
+            // }
             
-            EditorGUILayout.BeginVertical("box");
-            EditorGUILayout.LabelField(actualObjects);
-            EditorGUILayout.EndHorizontal(); 
+            // EditorGUILayout.BeginVertical("box");
+            // EditorGUILayout.LabelField(actualObjects);
+            // EditorGUILayout.EndHorizontal(); 
         }
 
     }

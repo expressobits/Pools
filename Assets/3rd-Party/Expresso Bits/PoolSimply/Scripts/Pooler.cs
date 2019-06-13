@@ -24,5 +24,14 @@ namespace ExpressoBits.PoolSimply
             OnDisableFromPool.Invoke();
         }
 
+        
+        public void InstantiateInPool(){
+            Pools.Instance().Instantiate(gameObject);
+        }
+
+        public void DestroyInPool(){
+            Pools.Instance().Destroy(gameObject);
+        }
+
     }
 }

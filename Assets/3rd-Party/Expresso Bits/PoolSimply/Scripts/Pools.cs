@@ -21,6 +21,7 @@ namespace ExpressoBits.PoolSimply
 
         public GameObject Instantiate(GameObject prefab){
             Pooler pooler = prefab.GetComponent<Pooler>();
+            
             Pool pool = GetPoolFromPrefab(prefab);
             return pool.Dequeue(prefab);
         }

@@ -22,7 +22,6 @@ namespace ExpressoBits.PoolSimply
         private PoolData poolData;
         #endregion
 
-
         public Pool(GameObject prefab,PoolData poolData){
             this.poolData = poolData;
             this.prefab = prefab;
@@ -113,6 +112,7 @@ namespace ExpressoBits.PoolSimply
                 ipooler.OnPoolerDisable();
             }
         }
+
         #endregion
 
         #region Editor
