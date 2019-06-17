@@ -53,6 +53,9 @@ namespace ExpressoBits.PoolSimply
                 InstantiateAmount(objects,prefab,poolData.increaseAmount);
             }
             obj = objects.Dequeue();
+            if(obj == null){
+                GameObject.Instantiate(prefab);
+            }
             OnPoolerEnable(obj);
             return obj;
         }

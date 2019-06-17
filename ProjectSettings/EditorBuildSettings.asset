@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/3rd-Party/Expresso Bits/PoolSimply-DemoScene/Scene/DemoScene.unity
+    guid: 2ad924bfef9e97c40a47d7fd290cd44a
+  - enabled: 1
+    path: Assets/3rd-Party/Expresso Bits/PoolSimply-DemoScene/Scene/TestNewScene.unity
+    guid: 4d05871cfbc786546ab7d52c392e5ef3
   m_configObjects: {}
