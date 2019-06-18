@@ -71,7 +71,7 @@ public class PoolsSimplyWindow : EditorWindow {
                     pool.Clear();
                 }
                 if(GUILayout.Button("Inc")){
-                    pool.IncreaseAmount();
+                    //pool.IncreaseAmount();
                 }
                 GUILayout.EndHorizontal();
             }
@@ -110,7 +110,7 @@ public class PoolsSimplyWindow : EditorWindow {
                 int key = Pools.Instance().ids[i];
                 Pool pool;
                 if(Pools.Instance().pools.TryGetValue(key, out pool)){
-                    pool.IncreaseAmount();
+                    //pool.IncreaseAmount();
                 }
                 
             }

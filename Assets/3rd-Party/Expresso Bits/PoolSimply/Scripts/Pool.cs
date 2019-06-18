@@ -11,20 +11,27 @@ namespace ExpressoBits.PoolSimply
      * This class is static and is used by the MonoBehaviour Instantiate and Destroy method extenders
      * 
      **/
-    [AddComponentMenu("PoolSimply/Pool")]
-    public class Pool
+    [AddComponentMenu("Pool/Pool")]
+    public class Pool : MonoBehaviour
     {
-
-        #region Data
+        [HideInInspector]
         public Queue<GameObject> objects  = new Queue<GameObject>();
-        public GameObject prefab;
-        private PoolData poolData;
-        #endregion
+        //[SerializeField]
+        //private GameObject prefab;
+        [SerializeField]
+        public PoolData poolData;
 
-        public Pool(GameObject prefab,PoolData poolData){
-            this.poolData = poolData;
-            this.prefab = prefab;
-            InstantiateAmount(objects,prefab,poolData.initialIncrease);
+        private void Awake() {
+            //InstantiateAmount(objects,prefab,poolData.initialIncrease);
+        }
+
+        private void Start() {
+            Pools.Instance().RegisterPool(poolData,this);
+        }
+
+        private void OnDestroy() {
+            Clear();
+            Pools.Instance().Unregister(poolData);
         }
 
         #region EnqueueAndDequeue
@@ -38,7 +45,7 @@ namespace ExpressoBits.PoolSimply
             
         }
 
-        public GameObject Instantiate(){
+        public GameObject Instantiate(GameObject prefab){
             return Dequeue(prefab);
         }
 
@@ -69,7 +76,6 @@ namespace ExpressoBits.PoolSimply
         }
         #endregion
         
-
         /**
          * Instance amount gameobjects in queue first params
          **/
@@ -93,7 +99,9 @@ namespace ExpressoBits.PoolSimply
             objects.Clear();
         }
 
-        public void IncreaseAmount(){
+        
+
+        public void IncreaseAmount(GameObject prefab){
             InstantiateAmount(objects,prefab,poolData.increaseAmount);
         }
         

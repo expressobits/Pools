@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace ExpressoBits.PoolSimply
 {
-    [AddComponentMenu("PoolSimply/Pooler")]
+    [AddComponentMenu("Pool/Pooler")]
     public class Pooler : MonoBehaviour, IPooler
     {
         [Header("Identification on pool")]
