@@ -23,7 +23,6 @@ public class Spawn : MonoBehaviour
                 this.InstantiateInPool(ballPrefab,
                     GetSpawnPosition(gameObject.transform.position),
                     Quaternion.identity);
-
                 this.InstantiateInPool(stonePrefab,
                     GetSpawnPosition(gameObject.transform.position),
                     Quaternion.identity);

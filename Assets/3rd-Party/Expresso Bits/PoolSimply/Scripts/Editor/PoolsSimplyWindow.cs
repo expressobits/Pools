@@ -18,10 +18,10 @@ public class PoolsSimplyWindow : EditorWindow {
     }
 
     private void OnGUI() {
-        // Texture2D tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
-        // tex.SetPixel(0, 0, new Color(1f, 0.8f, 0.1f));
-        // tex.Apply();
-        // GUI.DrawTexture(new Rect(0, 0, maxSize.x, maxSize.y), tex, ScaleMode.StretchToFill);
+        Texture2D tex = new Texture2D(1, 1, TextureFormat.RGBA32, false);
+        tex.SetPixel(0, 0, new Color(1f, 0.8f, 0.1f));
+        tex.Apply();
+        GUI.DrawTexture(new Rect(0, 0, maxSize.x, maxSize.y), tex, ScaleMode.StretchToFill);
         GUILayout.Label("Pools", EditorStyles.centeredGreyMiniLabel);
 
         DrawStats();

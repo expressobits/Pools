@@ -1,0 +1,12 @@
+{
+    "name": "br.com.expressobits.poolsimply",
+    "displayName": "Pool Simply",
+    "version": "0.9.2",
+    "unity": "2018.4",
+    "description": "Use fast and simple pools in unity",
+    "keywords": [
+        "pool",
+        "unity"
+    ],
+    "category": "Unity"
+}
