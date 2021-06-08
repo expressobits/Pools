@@ -1,12 +1,25 @@
 {
-    "name": "br.com.expressobits.poolsimply",
-    "displayName": "Pool Simply",
+    "name": "br.com.expressobits.pools",
+    "displayName": "EB Pools",
     "version": "0.9.2",
-    "unity": "2018.4",
+    "unity": "2020.3",
     "description": "Use fast and simple pools in unity",
     "keywords": [
         "pool",
         "unity"
     ],
-    "category": "Unity"
+    "category": "Unity",
+    "samples": [
+
+        {
+
+            "displayName": "Simple example",
+
+            "description": "Test scene for console utilities",
+
+            "path": "Samples~/SimpleExample"
+
+        }
+
+    ]
 }
