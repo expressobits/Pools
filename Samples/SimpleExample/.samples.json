@@ -1,0 +1,5 @@
+﻿{
+  "displayName": "Example Pool",
+  "description": "Test scene for pool setup",
+  "createSeparatePackage": true
+}
