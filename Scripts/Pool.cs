@@ -6,15 +6,16 @@ namespace ExpressoBits.Pools
 {
     public class Pool
     {
-        public readonly Queue<GameObject> objects  = new Queue<GameObject>();
+        public readonly Queue<GameObject> objects = new Queue<GameObject>();
         private readonly PoolData m_PoolData;
-        
+
         public Pool(PoolData poolData)
         {
             this.m_PoolData = poolData;
         }
 
         #region EnqueueAndDequeue
+
         /**
          * Add to queue prefab and set object disabled
          **/
@@ -31,27 +32,32 @@ namespace ExpressoBits.Pools
         public GameObject Dequeue(GameObject prefab)
         {
             // TODO Make this more efficiently
-            if (objects.Count == 0){
-                InstantiateAmount(objects,prefab,m_PoolData.InitialIncrease);
+            if (objects.Count == 0)
+            {
+                InstantiateAmount(objects, prefab, m_PoolData.InitialIncrease);
             }
+
             GameObject obj = objects.Dequeue();
-            if(!obj){
+            if (!obj)
+            {
                 Object.Instantiate(prefab);
             }
+
             obj.SetActive(true);
             //OnPoolerEnable(obj);
             return obj;
         }
-        
-        public GameObject Dequeue(GameObject prefab,Vector3 position, Quaternion rotation)
+
+        public GameObject Dequeue(GameObject prefab, Vector3 position, Quaternion rotation)
         {
             GameObject obj = Dequeue(prefab);
             obj.transform.position = position;
             obj.transform.rotation = rotation;
             return obj;
         }
+
         #endregion
-        
+
         /**
          * Instance amount gameobjects in queue first params
          **/
@@ -66,12 +72,14 @@ namespace ExpressoBits.Pools
         }
 
         #region Utils
+
         public void Clear()
         {
             foreach (var obj in objects)
             {
                 Object.Destroy(obj);
             }
+
             objects.Clear();
         }
 
@@ -94,4 +102,3 @@ namespace ExpressoBits.Pools
         #endregion
     }
 }
-

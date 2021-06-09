@@ -13,16 +13,16 @@ public static class ExtensionMethods
         return pool.Dequeue(gameObject);
     }
 
-    public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject, 
-    Vector3 position, Quaternion rotation)
+    public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject,
+        Vector3 position, Quaternion rotation)
     {
-        return PoolManager.Instance().Instantiate(gameObject,position,rotation);
+        return PoolManager.Instance().Instantiate(gameObject, position, rotation);
     }
 
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject, Pool pool,
-    Vector3 position, Quaternion rotation)
+        Vector3 position, Quaternion rotation)
     {
-        return pool.Dequeue(gameObject,position, rotation);
+        return pool.Dequeue(gameObject, position, rotation);
     }
 
     public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject)
@@ -30,10 +30,8 @@ public static class ExtensionMethods
         PoolManager.Instance().Destroy(gameObject);
     }
 
-    public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject,Pool pool)
+    public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject, Pool pool)
     {
         pool.Enqueue(gameObject);
     }
-
 }
-

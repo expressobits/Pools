@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace ExpressoBits.Pools
@@ -7,11 +6,9 @@ namespace ExpressoBits.Pools
     [AddComponentMenu("Pool/Pooler")]
     public class Pooler : MonoBehaviour, IPooler
     {
-        [Header("Identification on pool")]
-        public PoolData poolData;
+        [Header("Identification on pool")] public PoolData poolData;
 
-        [Header("Events")]
-        public UnityEvent onEnableFromPool;
+        [Header("Events")] public UnityEvent onEnableFromPool;
         public UnityEvent onDisableFromPool;
 
         public void OnPoolerEnable()
@@ -23,6 +20,5 @@ namespace ExpressoBits.Pools
         {
             onDisableFromPool.Invoke();
         }
-
     }
 }
