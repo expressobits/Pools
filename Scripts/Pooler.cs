@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace ExpressoBits.PoolSimply
+namespace ExpressoBits.Pools
 {
     [AddComponentMenu("Pool/Pooler")]
     public class Pooler : MonoBehaviour, IPooler
@@ -11,30 +11,17 @@ namespace ExpressoBits.PoolSimply
         public PoolData poolData;
 
         [Header("Events")]
-        public UnityEvent OnEnableFromPool;
-        public UnityEvent OnDisableFromPool;
+        public UnityEvent onEnableFromPool;
+        public UnityEvent onDisableFromPool;
 
         public void OnPoolerEnable()
         {
-            OnEnableFromPool.Invoke();
+            onEnableFromPool.Invoke();
         }
 
         public void OnPoolerDisable()
         {
-            OnDisableFromPool.Invoke();
-        }
-
-        
-        public void InstantiateInPool(){
-
-            Pools.Instance().Instantiate(gameObject);
-
-        }
-
-        public void DestroyInPool(){
-
-            Pools.Instance().Destroy(gameObject);
-            
+            onDisableFromPool.Invoke();
         }
 
     }

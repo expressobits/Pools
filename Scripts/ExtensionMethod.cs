@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using System;
-using ExpressoBits.PoolSimply;
+using ExpressoBits.Pools;
 
 public static class ExtensionMethods
 {
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject)
     {
-        return Pools.Instance().Instantiate(gameObject);
+        return PoolManager.Instance().Instantiate(gameObject);
     }
 
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject, Pool pool)
@@ -17,7 +16,7 @@ public static class ExtensionMethods
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject, 
     Vector3 position, Quaternion rotation)
     {
-        return Pools.Instance().Instantiate(gameObject,position,rotation);
+        return PoolManager.Instance().Instantiate(gameObject,position,rotation);
     }
 
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject, Pool pool,
@@ -28,7 +27,7 @@ public static class ExtensionMethods
 
     public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject)
     {
-        Pools.Instance().Destroy(gameObject);
+        PoolManager.Instance().Destroy(gameObject);
     }
 
     public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject,Pool pool)

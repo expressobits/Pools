@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace ExpressoBits.PoolSimply
+namespace ExpressoBits.Pools
 {
     [CustomEditor(typeof(Pool))]
     public class PoolEditor : Editor {

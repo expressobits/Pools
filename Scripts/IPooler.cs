@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ExpressoBits.PoolSimply
+namespace ExpressoBits.Pools
 {
     public interface IPooler
     {
