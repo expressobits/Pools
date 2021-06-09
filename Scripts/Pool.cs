@@ -7,11 +7,13 @@ namespace ExpressoBits.Pools
     public class Pool
     {
         public readonly Queue<GameObject> objects = new Queue<GameObject>();
-        private readonly PoolData m_PoolData;
 
-        public Pool(PoolData poolData)
+        private int m_IncreaseSize;
+        
+        public Pool(int increaseSize)
         {
-            this.m_PoolData = poolData;
+            if (increaseSize < 1) increaseSize = 1;
+            this.m_IncreaseSize = increaseSize;
         }
 
         #region EnqueueAndDequeue
@@ -22,7 +24,7 @@ namespace ExpressoBits.Pools
         public void Enqueue(GameObject obj)
         {
             obj.SetActive(false);
-            OnPoolerDisable(obj);
+            //OnPoolerDisable(obj);
             objects.Enqueue(obj);
         }
 
@@ -31,10 +33,9 @@ namespace ExpressoBits.Pools
          **/
         public GameObject Dequeue(GameObject prefab)
         {
-            // TODO Make this more efficiently
             if (objects.Count == 0)
             {
-                InstantiateAmount(objects, prefab, m_PoolData.InitialIncrease);
+                InstantiateAmount(objects, prefab, m_IncreaseSize);
             }
 
             GameObject obj = objects.Dequeue();
@@ -59,7 +60,7 @@ namespace ExpressoBits.Pools
         #endregion
 
         /**
-         * Instance amount gameobjects in queue first params
+         * Instance amount GameObjects in queue first params
          **/
         private void InstantiateAmount(Queue<GameObject> objs, GameObject prefab, int amount)
         {

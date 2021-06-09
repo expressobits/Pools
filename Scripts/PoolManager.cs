@@ -59,6 +59,7 @@ namespace ExpressoBits.Pools
 
         public void Destroy(GameObject obj, PoolData poolData)
         {
+            // TODO problem with obj != prefab
             Pool pool = GetPoolFromPoolData(poolData);
             Destroy(obj, pool);
         }
@@ -98,7 +99,7 @@ namespace ExpressoBits.Pools
             var id = poolData.GetInstanceID();
             var exist = pools.TryGetValue(id, out var pool);
             if (exist) return pool;
-            pool = new Pool(poolData);
+            pool = new Pool(poolData.InitialIncrease);
             instance.RegisterPool(poolData, pool);
             return pool;
         }
@@ -106,7 +107,8 @@ namespace ExpressoBits.Pools
 #if UNITY_EDITOR
         public List<int> GetKeyList()
         {
-            return new List<int>(pools.Keys);
+            //return new List<int>(pools.Keys);
+            return null;
         }
 #endif
     }
