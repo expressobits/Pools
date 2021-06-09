@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using ExpressoBits.Pools;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Ball : MonoBehaviour {
@@ -12,25 +14,12 @@ public class Ball : MonoBehaviour {
         m_Renderer = GetComponent<Renderer>();
     }
 
-    private void Start() {
+    private void OnEnable()
+    {
         m_Renderer.material.color = Random.ColorHSV();
         m_Rigidbody.velocity = Vector3.zero;
         m_Rigidbody.angularVelocity = Vector3.zero;
         m_Rigidbody.angularDrag = 0f;
     }
-
-    // public void OnPoolerDisable()
-    // {
-    //     //Example use interface IPooler
-    // }
-    //
-    // public void OnPoolerEnable()
-    // {
-    //     //Example use interface IPooler
-    //     m_Renderer.material.color = Random.ColorHSV();
-    //     m_Rigidbody.velocity = Vector3.zero;
-    //     m_Rigidbody.angularVelocity = Vector3.zero;
-    //     m_Rigidbody.angularDrag = 0f;
-    // }
 
 }
