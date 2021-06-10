@@ -17,9 +17,9 @@ public class FPS : MonoBehaviour
         // style.alignment = TextAnchor.UpperLeft;
         // style.fontSize = h * 4 / 100;
         // style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
-        var msec = m_DeltaTime * 1000.0f;
-        var fps = 1.0f / m_DeltaTime;
-        var text = $"{msec:000.0} MS {fps:0.} FPS";
-        GUILayout.Label(text);
+        // var msec = m_DeltaTime * 1000.0f;
+        // var fps = 1.0f / m_DeltaTime;
+        // var text = $"{msec:000.0} MS {fps:0.} FPS";
+        // GUILayout.Label(text);
     }
 }
