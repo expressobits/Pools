@@ -41,11 +41,9 @@ namespace ExpressoBits.Pools
             GameObject obj = objects.Dequeue();
             if (!obj)
             {
-                Object.Instantiate(prefab);
+                obj = Object.Instantiate(prefab);
             }
-
             obj.SetActive(true);
-            //OnPoolerEnable(obj);
             return obj;
         }
 

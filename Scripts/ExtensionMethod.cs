@@ -5,7 +5,7 @@ public static class ExtensionMethods
 {
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject)
     {
-        return PoolManager.Instance().Instantiate(gameObject);
+        return PoolManager.Instantiate(gameObject);
     }
 
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject, Pool pool)
@@ -16,7 +16,7 @@ public static class ExtensionMethods
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject,
         Vector3 position, Quaternion rotation)
     {
-        return PoolManager.Instance().Instantiate(gameObject, position, rotation);
+        return PoolManager.Instantiate(gameObject, position, rotation);
     }
 
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject gameObject, Pool pool,
@@ -27,7 +27,7 @@ public static class ExtensionMethods
 
     public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject)
     {
-        PoolManager.Instance().Destroy(gameObject);
+        PoolManager.Destroy(gameObject);
     }
 
     public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject, Pool pool)
