@@ -8,12 +8,20 @@ namespace ExpressoBits.Pools
     {
         public readonly Queue<GameObject> objects = new Queue<GameObject>();
 
-        private int m_IncreaseSize;
-        
-        public Pool(int increaseSize)
+        private uint IncreaseSize
         {
-            if (increaseSize < 1) increaseSize = 1;
-            this.m_IncreaseSize = increaseSize;
+            get => m_IncreaseSize;
+            set
+            {
+                if (value < 1) value = 1;
+                m_IncreaseSize = value;
+            }
+        }
+        private uint m_IncreaseSize;
+        
+        public Pool(PoolSettings settings)
+        {
+            IncreaseSize = settings.increaseSize;
         }
 
         #region EnqueueAndDequeue
@@ -35,7 +43,7 @@ namespace ExpressoBits.Pools
         {
             if (objects.Count == 0)
             {
-                InstantiateAmount(objects, prefab, m_IncreaseSize);
+                InstantiateAmount(objects, prefab, (int)IncreaseSize);
             }
 
             GameObject obj = objects.Dequeue();

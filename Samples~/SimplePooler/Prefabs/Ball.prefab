@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3676238393815039908}
   - component: {fileID: 3676238393815039912}
   - component: {fileID: 3676238393815039913}
+  - component: {fileID: 4239051783698892707}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -122,6 +123,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 3676238393815039911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eea08a844a954a34fbd72c7c50500bec, type: 3}
+  m_Script: {fileID: 11500000, guid: e06b5b93a3a5b324d9bb3685d49510e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4239051783698892707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3676238393815039911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c57bee45aa71b24fb48c42644aa19c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolSettings:
+    increaseSize: 2
+  onEnableFromPool:
+    m_PersistentCalls:
+      m_Calls: []
+  onDisableFromPool:
+    m_PersistentCalls:
+      m_Calls: []

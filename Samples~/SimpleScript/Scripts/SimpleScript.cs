@@ -11,7 +11,7 @@ public class SimpleScript : MonoBehaviour
 
     public IEnumerator Start()
     {
-        pool = new Pool(5);
+        pool = new Pool(new PoolSettings{ increaseSize = 10 });
         
         for (int i = 0; i < 50; i++)
         {

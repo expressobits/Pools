@@ -7,6 +7,7 @@ namespace ExpressoBits.Pools
     {
         private static readonly Dictionary<GameObject, Pool> PoolsFromPrefab = new Dictionary<GameObject, Pool>();
         private static readonly Dictionary<GameObject, Pool> PoolsFromObjects = new Dictionary<GameObject, Pool>();
+        private const uint defaultIncreaseSize = 5;
 
         #region Basic Functions
         public static GameObject Instantiate(GameObject prefab, Pool pool, Vector3 position, Quaternion rotation)
@@ -24,7 +25,16 @@ namespace ExpressoBits.Pools
         {
             if (!PoolsFromPrefab.TryGetValue(prefab, out var pool))
             {
-                pool = new Pool(5);
+                PoolSettings settings;
+                if (prefab.TryGetComponent(out Pooler pooler))
+                {
+                    settings = pooler.poolSettings;
+                }
+                else
+                {
+                    settings = new PoolSettings{ increaseSize = defaultIncreaseSize };
+                }
+                pool = new Pool(settings);
                 RegisterPool(prefab, pool);
             }
             GameObject obj = Instantiate(prefab, pool, position, rotation);
@@ -41,7 +51,7 @@ namespace ExpressoBits.Pools
         {
             if (PoolsFromObjects.TryGetValue(obj, out var pool))
             {
-                PoolsFromObjects.Remove(obj);
+                RemoveFromPool(obj);
                 Destroy(obj, pool);
             }
             else
@@ -50,6 +60,11 @@ namespace ExpressoBits.Pools
                 Object.Destroy(obj);
             }
             
+        }
+        
+        public static bool RemoveFromPool(GameObject obj)
+        {
+            return PoolsFromObjects.Remove(obj);
         }
         #endregion
 

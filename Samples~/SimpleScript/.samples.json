@@ -1,5 +1,5 @@
 ﻿{
   "displayName": "Simple use in script",
-  "description": "Shows how to use more basic pool structure",
+  "description": "Basic pool structure using only script for pooling",
   "createSeparatePackage": true
 }

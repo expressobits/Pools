@@ -13,11 +13,20 @@
 
         {
 
-            "displayName": "Simple example",
+            "displayName": "Simple Pooler Example",
 
-            "description": "Test scene for console utilities",
+            "description": "Scene Test use Pooler Component",
 
-            "path": "Samples~/SimpleExample"
+            "path": "Samples~/SimplePooler"
+
+        },
+        {
+
+            "displayName": "Simple Script",
+
+            "description": "Basic pool structure using only script for pooling",
+
+            "path": "Samples~/SimpleScript"
 
         }
 
