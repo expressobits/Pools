@@ -16,15 +16,6 @@ Create Simple and Easy Pool of objects! This extension creates easy use of Pool 
 
 ✔️ Pooler component for Unity Events.
 
-## Install
-
-To install open <b>Window</b> > <b>Package Manager</b> and click on the + package icon and choose <b>"Add package from git url"</b> and type:
-
-> https://github.com/ExpressoBits/EBPools.git
-
-and you're done!
-
-
 ## Usage
 Simple change Instantiate/Destroy method for this.InstantianteInPool/this.DestroyInPool!.
 
@@ -42,4 +33,10 @@ Simple change Instantiate/Destroy method for this.InstantianteInPool/this.Destro
     this.DestroyInPool(gameObject);
 ```
 
+## Install
 
+To install open <b>Window</b> > <b>Package Manager</b> and click on the + package icon and choose <b>"Add package from git url"</b> and type:
+
+> https://github.com/ExpressoBits/EBPools.git
+
+and you're done!
