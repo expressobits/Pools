@@ -4,6 +4,10 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](MIT)
 [![Twitter: ScriptsEngineer](https://img.shields.io/twitter/follow/ScriptsEngineer.svg?style=social)](https://twitter.com/ScriptsEngineer)
 
+Unity performance issues generating and destroying multiple objects?
+This simple library solves your problem in a simple way. With few steps your object can be reused several times, avoiding the *garbage collector*.
+Create Simple and Easy Pool of objects! This extension creates easy use of Pool with objects that are instantiated and destroyed, avoiding excessive use of memory and processing.
+
 ## Features
 
 ✔️ Simple use,  Change only 2 line of your code!
@@ -24,22 +28,18 @@ and you're done!
 ## Usage
 Simple change Instantiate/Destroy method for this.InstantianteInPool/this.DestroyInPool!.
 
-Before
-´´´csharp
+### Before
+```csharp
       Instantiate(prefab);
       ...
       Destroy(gameObject);
-´´´
+```
 
-After
-´´´csharp
+### After
+```csharp
     this.InstantiateInPool(prefab);
     ...
     this.DestroyInPool(gameObject);
-´´´
+```
 
-![PoolersComponent](https://github.com/ExpressoBits/PoolSimply/blob/master/Assets/3rd-Party/Expresso%20Bits/PoolSimply/Textures/Editor/Pool.png)
-Unity performance issues generating and destroying multiple objects?
-This simple library solves your problem in a simple way. With few steps your object can be reused several times, avoiding the *garbage collector*.
 
-Create Simple and Easy Pool of objects! This extension creates easy use of Pool with objects that are instantiated and destroyed, avoiding excessive use of memory and processing.
