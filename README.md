@@ -23,17 +23,19 @@ and you're done!
 
 ## Usage
 Simple change Instantiate/Destroy method for this.InstantianteInPool/this.DestroyInPool!.
+
 Before
 ´´´csharp
-Instantiate(prefab);
-...
-Destroy(gameObject);
+      Instantiate(prefab);
+      ...
+      Destroy(gameObject);
 ´´´
+
 After
 ´´´csharp
-this.InstantiateInPool(prefab);
-...
-this.DestroyInPool(gameObject);
+    this.InstantiateInPool(prefab);
+    ...
+    this.DestroyInPool(gameObject);
 ´´´
 
 ![PoolersComponent](https://github.com/ExpressoBits/PoolSimply/blob/master/Assets/3rd-Party/Expresso%20Bits/PoolSimply/Textures/Editor/Pool.png)
