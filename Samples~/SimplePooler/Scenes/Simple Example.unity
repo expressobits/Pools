@@ -606,7 +606,7 @@ MonoBehaviour:
   fireTime: 0.02
   count: 10
   rangeRandomSize: 10
-  ballPrefab: {fileID: 3676238393815039911, guid: fd3c136ed4c7dee409ca2a709d1cb589, type: 3}
+  prefab: {fileID: 3676238393815039911, guid: fd3c136ed4c7dee409ca2a709d1cb589, type: 3}
 --- !u!23 &1874712774
 MeshRenderer:
   m_ObjectHideFlags: 0

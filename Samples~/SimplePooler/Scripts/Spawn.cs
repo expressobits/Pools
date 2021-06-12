@@ -8,18 +8,18 @@ public class Spawn : MonoBehaviour
     public int count = 10;
     public float rangeRandomSize;
 
-    public GameObject ballPrefab;
-
+    public GameObject prefab;
+    
     private void Fire()
     {
         for (int i = 0; i < count; i++)
         {
             if(isEnablePool){
-                this.InstantiateInPool(ballPrefab,
+                this.InstantiateInPool(prefab,
                     GetSpawnPosition(gameObject.transform.position),
                     Quaternion.identity);
             }else{
-                Instantiate(ballPrefab,
+                Instantiate(prefab,
                     GetSpawnPosition(gameObject.transform.position),
                     Quaternion.identity);
             }
