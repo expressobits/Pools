@@ -1,5 +1,5 @@
 # Welcome to Expresso Bits Pools 👋
-![Version](https://img.shields.io/badge/version-1.0.1-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-1.0.3-blue.svg?cacheSeconds=2592000)
 [![Publish to npm](https://github.com/ExpressoBits/EBPools/actions/workflows/main.yml/badge.svg)](https://github.com/ExpressoBits/EBPools/actions/workflows/main.yml)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](todo-doc)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](MIT)
