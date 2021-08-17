@@ -32,7 +32,8 @@
 
     ],
     "author": {
-        "name": "Expresso Bits"
+        "name": "ExpressoBits"
+        "email": "scriptsengineer@gmail.com"
     },
     "license": "MIT",
     "homepage": "https://github.com/ExpressoBits/EBPools",
