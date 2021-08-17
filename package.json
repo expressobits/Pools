@@ -30,5 +30,18 @@
 
         }
 
-    ]
+    ],
+    "author": {
+        "name": "ScriptsEngineer",
+        "email": "scriptsengineer@gmail.com"
+    },
+    "license": "MIT",
+    "homepage": "https://github.com/ExpressoBits/EBPools",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ExpressoBits/EBPools.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ExpressoBits/EBPools/issues"
+    }
 }
