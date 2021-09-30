@@ -5,16 +5,16 @@ namespace ExpressoBits.Pools
 {
     public class PoolManager
     {
-        private static readonly Dictionary<GameObject, Pool> PoolsFromPrefab = new Dictionary<GameObject, Pool>();
-        private static readonly Dictionary<GameObject, Pool> PoolsFromObjects = new Dictionary<GameObject, Pool>();
+        private static readonly Dictionary<GameObject, PoolData> PoolsFromPrefab = new Dictionary<GameObject, PoolData>();
+        private static readonly Dictionary<GameObject, PoolData> PoolsFromObjects = new Dictionary<GameObject, PoolData>();
         private const uint defaultIncreaseSize = 5;
 
         #region Basic Functions
-        public static GameObject Instantiate(GameObject prefab, Pool pool, Vector3 position, Quaternion rotation)
+        public static GameObject Instantiate(GameObject prefab, PoolData pool, Vector3 position, Quaternion rotation)
         {
             return pool.Dequeue(prefab, position, rotation);
         }
-        public static void Destroy(GameObject obj, Pool pool)
+        public static void Destroy(GameObject obj, PoolData pool)
         {
             pool.Enqueue(obj);
         }
@@ -34,7 +34,7 @@ namespace ExpressoBits.Pools
                 {
                     settings = new PoolSettings{ increaseSize = defaultIncreaseSize };
                 }
-                pool = new Pool(settings);
+                pool = new PoolData(settings);
                 RegisterPool(prefab, pool);
             }
             GameObject obj = Instantiate(prefab, pool, position, rotation);
@@ -70,7 +70,7 @@ namespace ExpressoBits.Pools
 
         #region Register and Unregister Pool
         // Register pool in dictionary with instance id pool data
-        private static void RegisterPool(GameObject prefab, Pool pool)
+        private static void RegisterPool(GameObject prefab, PoolData pool)
         {
             PoolsFromPrefab.Add(prefab, pool);
         }

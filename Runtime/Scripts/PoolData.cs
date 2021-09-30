@@ -4,9 +4,10 @@ using Object = UnityEngine.Object;
 
 namespace ExpressoBits.Pools
 {
-    public class Pool
+    [System.Serializable]
+    public class PoolData
     {
-        public readonly Queue<GameObject> objects = new Queue<GameObject>();
+        public Queue<GameObject> objects = new Queue<GameObject>();
 
         private uint IncreaseSize
         {
@@ -17,11 +18,12 @@ namespace ExpressoBits.Pools
                 m_IncreaseSize = value;
             }
         }
-        private uint m_IncreaseSize;
+        [SerializeField] private uint m_IncreaseSize;
         
-        public Pool(PoolSettings settings)
+        public PoolData(PoolSettings settings)
         {
             IncreaseSize = settings.increaseSize;
+            objects = new Queue<GameObject>();
         }
 
         #region EnqueueAndDequeue
@@ -31,6 +33,7 @@ namespace ExpressoBits.Pools
          **/
         public void Enqueue(GameObject obj)
         {
+            if(objects == null) objects = new Queue<GameObject>();
             obj.SetActive(false);
             //OnPoolerDisable(obj);
             objects.Enqueue(obj);
@@ -41,6 +44,7 @@ namespace ExpressoBits.Pools
          **/
         public GameObject Dequeue(GameObject prefab)
         {
+            if(objects == null) objects = new Queue<GameObject>();
             if (objects.Count == 0)
             {
                 InstantiateAmount(objects, prefab, (int)IncreaseSize);
@@ -58,8 +62,7 @@ namespace ExpressoBits.Pools
         public GameObject Dequeue(GameObject prefab, Vector3 position, Quaternion rotation)
         {
             GameObject obj = Dequeue(prefab);
-            obj.transform.position = position;
-            obj.transform.rotation = rotation;
+            obj.transform.SetPositionAndRotation(position, rotation);
             return obj;
         }
 

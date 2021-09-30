@@ -3,8 +3,8 @@ using UnityEditor;
 
 namespace ExpressoBits.Pools
 {
-    [CustomEditor(typeof(Pool))]
-    public class PoolEditor : Editor {
+    [CustomEditor(typeof(PoolData))]
+    public class PoolDataEditor : Editor {
 
         private string actualObjects;
         //TODO Update string actual objects
