@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3411d42cae3e7344d9d0d2709c160b61, type: 3}
   m_Name: Pool
   m_EditorClassIdentifier: 
-  Data:
-    m_IncreaseSize: 10
+  data:
+    prefab: {fileID: 8781678333159053775, guid: 37a9353f1282b9a4aa7d630d6b0e9e0c, type: 3}
+    settings:
+      IncreaseSize: 1

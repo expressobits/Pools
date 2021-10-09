@@ -3,19 +3,15 @@ using ExpressoBits.Pools;
 
 public static class ExtensionMethods
 {
+    #region Instantiate Methods
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject original)
     {
         return PoolManager.Instantiate(original);
     }
 
-    public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject original, PoolData poolData)
+    public static GameObject InstantiateInPool(this MonoBehaviour value,PoolData poolData)
     {
-        return poolData.Dequeue(original);
-    }
-
-    public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject original, Pool pool)
-    {
-        return pool.Data.Dequeue(original);
+        return poolData.Dequeue();
     }
 
     public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject original,
@@ -32,18 +28,14 @@ public static class ExtensionMethods
         return o.GetComponent<T>();
     }
     
-    public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject original, PoolData poolData,
+    public static GameObject InstantiateInPool(this MonoBehaviour value, PoolData poolData,
         Vector3 position, Quaternion rotation)
     {
-        return poolData.Dequeue(original, position, rotation);
+        return poolData.Dequeue(position, rotation);
     }
+    #endregion
 
-    public static GameObject InstantiateInPool(this MonoBehaviour value, GameObject original, Pool pool,
-        Vector3 position, Quaternion rotation)
-    {
-        return pool.Data.Dequeue(original, position, rotation);
-    }
-
+    #region Destroy Methods
     public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject)
     {
         PoolManager.Destroy(gameObject);
@@ -53,9 +45,5 @@ public static class ExtensionMethods
     {
         pool.Enqueue(gameObject);
     }
-
-    public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject, Pool pool)
-    {
-        pool.Data.Enqueue(gameObject);
-    }
+    #endregion
 }

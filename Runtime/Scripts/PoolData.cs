@@ -4,25 +4,20 @@ using Object = UnityEngine.Object;
 
 namespace ExpressoBits.Pools
 {
+    // TODO transform to scriptable
     [System.Serializable]
     public class PoolData
     {
         public Queue<GameObject> objects = new Queue<GameObject>();
+        public GameObject Prefab => prefab;
+        public PoolSettings Settings => settings;
 
-        private uint IncreaseSize
-        {
-            get => m_IncreaseSize;
-            set
-            {
-                if (value < 1) value = 1;
-                m_IncreaseSize = value;
-            }
-        }
-        [SerializeField] private uint m_IncreaseSize;
+        [SerializeField] private PoolSettings settings;
+        [SerializeField] private GameObject prefab;
         
-        public PoolData(PoolSettings settings)
+        public PoolData(PoolSettings settings, GameObject prefab)
         {
-            IncreaseSize = settings.increaseSize;
+            this.settings = settings;
             objects = new Queue<GameObject>();
         }
 
@@ -42,12 +37,12 @@ namespace ExpressoBits.Pools
         /**
          * Get object from queue with prefab model, if no exist
          **/
-        public GameObject Dequeue(GameObject prefab)
+        public GameObject Dequeue()
         {
             if(objects == null) objects = new Queue<GameObject>();
             if (objects.Count == 0)
             {
-                InstantiateAmount(objects, prefab, (int)IncreaseSize);
+                InstantiateAmount(objects, prefab, (int)Settings.IncreaseSize);
             }
 
             GameObject obj = objects.Dequeue();
@@ -59,9 +54,13 @@ namespace ExpressoBits.Pools
             return obj;
         }
 
-        public GameObject Dequeue(GameObject prefab, Vector3 position, Quaternion rotation)
+        public GameObject Dequeue(Vector3 position, Quaternion rotation)
         {
-            GameObject obj = Dequeue(prefab);
+            // NOTE This exists for cases that have calls in two instantaneous locations and only one has pooldata as a reference.
+            PoolManager.RegisterPoolIfNotExists(this);
+            //
+            
+            GameObject obj = Dequeue();
             obj.transform.SetPositionAndRotation(position, rotation);
             return obj;
         }
