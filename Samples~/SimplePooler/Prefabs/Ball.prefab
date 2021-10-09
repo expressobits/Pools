@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolSettings:
-    increaseSize: 2
+    IncreaseSize: 2
   onEnableFromPool:
     m_PersistentCalls:
       m_Calls: []

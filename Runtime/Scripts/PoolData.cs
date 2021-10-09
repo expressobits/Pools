@@ -18,6 +18,7 @@ namespace ExpressoBits.Pools
         public PoolData(PoolSettings settings, GameObject prefab)
         {
             this.settings = settings;
+            this.prefab = prefab;
             objects = new Queue<GameObject>();
         }
 
