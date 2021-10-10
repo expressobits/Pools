@@ -23,7 +23,15 @@ public static class ExtensionMethods
     public static T InstantiateFromPool<T>(this MonoBehaviour value, T original,
         Vector3 position, Quaternion rotation) where T : Component
     {
-        GameObject o = PoolManager.Instantiate(original.gameObject, position, rotation);
+        GameObject o = InstantiateFromPool(value, original.gameObject, position, rotation);
+        // TODO Wrong perfomance
+        return o.GetComponent<T>();
+    }
+
+    public static T InstantiateFromPool<T>(this MonoBehaviour value, Pool pool,
+        Vector3 position, Quaternion rotation) where T : Component
+    {
+        GameObject o = InstantiateFromPool(value, pool, position, rotation);
         // TODO Wrong perfomance
         return o.GetComponent<T>();
     }

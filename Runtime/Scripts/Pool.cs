@@ -38,8 +38,29 @@ namespace ExpressoBits.Pools
 
         public GameObject Instantiate(Vector3 position, Quaternion rotation)
         {
-            GameObject gameObject = Dequeue();
+            GameObject gameObject = Instantiate();
             gameObject.transform.SetPositionAndRotation(position, rotation);
+            return gameObject;
+        }
+
+        public GameObject Instantiate(Transform parent)
+        {
+            GameObject gameObject = Instantiate();
+            gameObject.transform.SetParent(parent);
+            return gameObject;
+        }
+
+        public GameObject Instantiate(Transform parent, bool instantiateInWorldSpace)
+        {
+            GameObject gameObject = Instantiate();
+            gameObject.transform.SetParent(parent, instantiateInWorldSpace);
+            return gameObject;
+        }
+
+        public GameObject Instantiate(Vector3 position, Quaternion rotation, Transform parent)
+        {
+            GameObject gameObject = Instantiate(position, rotation);
+            gameObject.transform.SetParent(parent);
             return gameObject;
         }
 
