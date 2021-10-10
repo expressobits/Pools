@@ -62,8 +62,8 @@ and you're done!
 Name: OpenUPM
 Url: https://package.openupm.com
 Scopes:
-´´´com.openupm´´´
-´´´br.com.expressobits´´´
+```com.openupm```
+```br.com.expressobits```
 2. Close the project settings
 3. Open the package manager. Click on menu Window -> Package Manager and select "Packages: My Registries", select the latest version of EB Pools and click install
 4. You may come back to the package manager to unistall EB Pools or upgrade it.
