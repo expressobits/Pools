@@ -9,11 +9,6 @@ Unity performance issues generating and destroying multiple objects?
 This simple library solves your problem in a simple way. With few steps your object can be reused several times, avoiding the *garbage collector*.
 Create Simple and Easy Pool of objects! This extension creates easy use of Pool with objects that are instantiated and destroyed, avoiding excessive use of memory and processing.
 
-Without Pools
-![SceneWithoutPoolSimply](https://raw.githubusercontent.com/wiki/ExpressoBits/EBPools/Images/SceneWithoutPoolSimply.gif){width=25%}
-With Pools
-![SceneWithPoolSimply](https://raw.githubusercontent.com/wiki/ExpressoBits/EBPools/Images/SceneWithPoolSimply.gif){width=25%}
-
 ## Features
 
 ✔️ Simple use,  Change only 2 line of your code!
