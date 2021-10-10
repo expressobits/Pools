@@ -10,9 +10,9 @@ This simple library solves your problem in a simple way. With few steps your obj
 Create Simple and Easy Pool of objects! This extension creates easy use of Pool with objects that are instantiated and destroyed, avoiding excessive use of memory and processing.
 
 Without Pools
-![SceneWithoutPoolSimply](https://raw.githubusercontent.com/wiki/ExpressoBits/EBPools/Images/SceneWithoutPoolSimply.gif)
+![SceneWithoutPoolSimply](https://raw.githubusercontent.com/wiki/ExpressoBits/EBPools/Images/SceneWithoutPoolSimply.gif){width=25%}
 With Pools
-![SceneWithPoolSimply](https://raw.githubusercontent.com/wiki/ExpressoBits/EBPools/Images/SceneWithPoolSimply.gif)
+![SceneWithPoolSimply](https://raw.githubusercontent.com/wiki/ExpressoBits/EBPools/Images/SceneWithPoolSimply.gif){width=25%}
 
 ## Features
 
