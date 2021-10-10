@@ -31,7 +31,7 @@ Simple change Instantiate/Destroy method for this.InstantianteInPool/this.Destro
 ```csharp
     this.InstantiateFromPool(prefab);
     ...
-    this.DestroyFromPool(gameObject);
+    this.DestroyInPool(gameObject);
 ```
 
 ### Advanced Usages
@@ -43,9 +43,9 @@ For more advanced use, scriptable Pool can be created by <b>Expresso Bits/Pools/
 In the code just use:
 
 ```csharp
-    this.InstantiateFromPool(prefab);
+    pool.Instantiate();
     ...
-    this.DestroyFromPool(gameObject);
+    pool.Destroy();
 ```
 
 
