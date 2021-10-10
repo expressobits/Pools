@@ -52,6 +52,6 @@ In the code just use:
 
 To install open <b>Window</b> > <b>Package Manager</b> and click on the + package icon and choose <b>"Add package from git url"</b> and type:
 
-> https://github.com/ExpressoBits/EBPools.git
+> https://github.com/ExpressoBits/Pools.git
 
 and you're done!
