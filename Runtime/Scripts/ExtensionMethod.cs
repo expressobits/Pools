@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
 using ExpressoBits.Pools;
+using UnityEngine;
 
 public static class ExtensionMethods
 {
@@ -9,7 +10,7 @@ public static class ExtensionMethods
         return PoolManager.Instantiate(original);
     }
 
-    public static GameObject InstantiateFromPool(this MonoBehaviour value,Pool pool)
+    public static GameObject InstantiateFromPool(this MonoBehaviour value, Pool pool)
     {
         return pool.Instantiate();
     }
@@ -19,7 +20,7 @@ public static class ExtensionMethods
     {
         return PoolManager.Instantiate(original, position, rotation);
     }
-    
+
     public static T InstantiateFromPool<T>(this MonoBehaviour value, T original,
         Vector3 position, Quaternion rotation) where T : Component
     {
@@ -35,7 +36,7 @@ public static class ExtensionMethods
         // TODO Wrong perfomance
         return o.GetComponent<T>();
     }
-    
+
     public static GameObject InstantiateFromPool(this MonoBehaviour value, Pool pool,
         Vector3 position, Quaternion rotation)
     {
@@ -44,13 +45,35 @@ public static class ExtensionMethods
     #endregion
 
     #region Destroy Methods
-    public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject)
+    public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject, float t = 0f)
     {
+        if (t <= 0f)
+        {
+            PoolManager.Destroy(gameObject);
+            return;
+        }
+        value.StartCoroutine(DestroyInPool(gameObject, t));
+    }
+
+    private static IEnumerator DestroyInPool(GameObject gameObject, float t)
+    {
+        yield return new WaitForSeconds(t);
         PoolManager.Destroy(gameObject);
     }
 
-    public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject, Pool pool)
+    public static void DestroyInPool(this MonoBehaviour value, GameObject gameObject, Pool pool, float t = 0f)
     {
+        if (t <= 0f)
+        {
+            pool.Destroy(gameObject);
+            return;
+        }
+        value.StartCoroutine(DestroyInPool(gameObject, pool, t));
+    }
+
+    private static IEnumerator DestroyInPool(GameObject gameObject, Pool pool, float t)
+    {
+        yield return new WaitForSeconds(t);
         pool.Destroy(gameObject);
     }
     #endregion
