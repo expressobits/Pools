@@ -1,7 +1,7 @@
 {
     "name": "br.com.expressobits.pools",
     "displayName": "EB Pools",
-    "version": "1.1.0",
+    "version": "1.1.8",
     "unity": "2020.3",
     "description": "Use fast and simple pools in unity",
     "keywords": [
@@ -10,6 +10,16 @@
     ],
     "category": "Unity",
     "samples": [
+
+        {
+
+            "displayName": "Pool Example",
+
+            "description": "Scene Test use Pool Scriptable Object",
+
+            "path": "Samples~/PoolExample"
+
+        },
 
         {
 

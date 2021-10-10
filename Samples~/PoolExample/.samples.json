@@ -1,5 +1,5 @@
 ﻿{
-  "displayName": "Simple use in script",
-  "description": "Basic pool structure using only script for pooling",
+  "displayName": "Simple use in Pool scriptable",
+  "description": "Use of pool scriptable to advanced manager gameObjects in pool",
   "createSeparatePackage": true
 }
