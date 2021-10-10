@@ -15,12 +15,21 @@ namespace ExpressoBits.Pools
             base.OnInspectorGUI();
 
 
-
-            if (GUILayout.Button("Destroy All Disabled Objects"))
+            EditorGUILayout.BeginHorizontal();
+            if (GUILayout.Button("Clear Pool"))
             {
                 pool.Clear();
                 Debug.Log("Clean all pool disabled objects!");
             }
+            EditorGUI.BeginDisabledGroup(!Application.isPlaying);
+            if (GUILayout.Button("Instantiate"))
+            {
+                pool.Instantiate();
+                Debug.Log("Instantiate GameObject From Pool!");
+            }
+            EditorGUI.EndDisabledGroup();
+
+            EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.BeginVertical("Box");
             var origFontStyle = EditorStyles.label.fontStyle;
@@ -33,7 +42,7 @@ namespace ExpressoBits.Pools
                 actualObjects = "Objects in pool: " + pool.Objects.Count;
                 foreach (var gameObject in pool.Objects)
                 {
-                    if(gameObject != null) ShowObject(gameObject);
+                    if (gameObject != null) ShowObject(gameObject);
                 }
             }
             else

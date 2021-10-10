@@ -15,7 +15,7 @@ public class Spawn : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             if(isEnablePool){
-                this.InstantiateInPool(prefab,
+                this.InstantiateFromPool(prefab,
                     GetSpawnPosition(gameObject.transform.position),
                     Quaternion.identity);
             }else{

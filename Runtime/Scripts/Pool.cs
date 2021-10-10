@@ -5,7 +5,6 @@ using Object = UnityEngine.Object;
 
 namespace ExpressoBits.Pools
 {
-    // TODO transform to scriptable
     [CreateAssetMenu(menuName = "Expresso Bits/Pools/Pool", fileName = "Pool")]
     public class Pool : ScriptableObject, IPool
     {
@@ -14,7 +13,7 @@ namespace ExpressoBits.Pools
         public GameObject Prefab => prefab;
         public Queue<GameObject> Objects => objects;
 
-        [SerializeField] private PoolSettings settings = new PoolSettings(){ IncreaseSize = 1 };
+        [SerializeField] private PoolSettings settings = new PoolSettings() { IncreaseSize = 1 };
         [SerializeField] private GameObject prefab;
         private Queue<GameObject> objects = new Queue<GameObject>();
 
@@ -24,56 +23,6 @@ namespace ExpressoBits.Pools
         }
 
         #region Basic Methods
-        public GameObject Instantiate()
-        {
-            return PoolManager.Instantiate(this);
-        }
-
-        public GameObject Instantiate(Vector3 position, Quaternion rotation)
-        {
-            return PoolManager.Instantiate(this, position, rotation);
-        }
-
-        public void Destroy(GameObject gameObject)
-        {
-            PoolManager.Destroy(gameObject, this);
-        }
-        #endregion
-
-        #region EnqueueAndDequeue
-
-        /**
-         * Add to queue prefab and set object disabled
-         **/
-        public void Enqueue(GameObject obj)
-        {
-            if (objects == null) objects = new Queue<GameObject>();
-            obj.SetActive(false);
-            OnPoolerDisable(obj);
-            objects.Enqueue(obj);
-        }
-
-        /**
-         * Get object from queue with prefab model, if no exist
-         **/
-        public GameObject Dequeue()
-        {
-            if (objects == null) objects = new Queue<GameObject>();
-            if (objects.Count == 0)
-            {
-                InstantiateAmount(objects, prefab, (int)Settings.IncreaseSize);
-            }
-
-            GameObject obj = objects.Dequeue();
-            if (!obj)
-            {
-                obj = Object.Instantiate(prefab);
-            }
-            OnPoolerEnable(obj);
-            obj.SetActive(true);
-            return obj;
-        }
-
         public void Setup(PoolSettings settings, GameObject prefab)
         {
             this.settings = settings;
@@ -82,33 +31,22 @@ namespace ExpressoBits.Pools
             objects = new Queue<GameObject>();
         }
 
-        public GameObject Dequeue(Vector3 position, Quaternion rotation)
+        public GameObject Instantiate()
         {
-            // NOTE This exists for cases that have calls in two instantaneous locations and only one has pooldata as a reference.
-            PoolManager.RegisterPoolIfNotExists(this);
-            //
-
-            GameObject obj = Dequeue();
-            obj.transform.SetPositionAndRotation(position, rotation);
-            return obj;
+            return Dequeue();
         }
 
-        #endregion
-
-        /**
-         * Instance amount GameObjects in queue first params
-         **/
-        private void InstantiateAmount(Queue<GameObject> objs, GameObject prefab, int amount)
+        public GameObject Instantiate(Vector3 position, Quaternion rotation)
         {
-            for (var i = 0; i < amount; i++)
-            {
-                var gameObject = Object.Instantiate(prefab);
-                gameObject.SetActive(false);
-                objs.Enqueue(gameObject);
-            }
+            GameObject gameObject = Dequeue();
+            gameObject.transform.SetPositionAndRotation(position, rotation);
+            return gameObject;
         }
 
-        #region Utils
+        public void Destroy(GameObject gameObject)
+        {
+            Enqueue(gameObject);
+        }
 
         public void Clear()
         {
@@ -120,6 +58,59 @@ namespace ExpressoBits.Pools
             objects.Clear();
         }
 
+        /**
+         * Instance amount GameObjects in queue first params
+         **/
+        public void InstantiateInPoolAmount(int amount)
+        {
+            for (var i = 0; i < amount; i++)
+            {
+                var gameObject = Object.Instantiate(prefab);
+                gameObject.SetActive(false);
+                objects.Enqueue(gameObject);
+            }
+        }
+        #endregion
+
+        #region EnqueueAndDequeue
+        /**
+         * Add to queue prefab and set object disabled
+         **/
+        private void Enqueue(GameObject obj)
+        {
+            if (objects == null) objects = new Queue<GameObject>();
+            obj.SetActive(false);
+            OnPoolerDisable(obj);
+            objects.Enqueue(obj);
+        }
+
+        /**
+         * Get object from queue with prefab model, if no exist
+         **/
+        private GameObject Dequeue()
+        {
+            // NOTE This exists for cases that have calls in two instantaneous locations and only one has pooldata as a reference.
+            PoolManager.RegisterPoolIfNotExists(this);
+            //
+
+            if (objects == null) objects = new Queue<GameObject>();
+            if (objects.Count == 0)
+            {
+                InstantiateInPoolAmount((int)Settings.IncreaseSize);
+            }
+
+            GameObject obj = objects.Dequeue();
+            if (!obj)
+            {
+                obj = Object.Instantiate(prefab);
+            }
+            OnPoolerEnable(obj);
+            obj.SetActive(true);
+            return obj;
+        }
+        #endregion
+
+        #region Utils
         private void OnPoolerEnable(GameObject obj)
         {
             foreach (var ipooler in obj.GetComponents<IPooler>())
@@ -135,7 +126,6 @@ namespace ExpressoBits.Pools
                 ipooler.OnPoolerDisable();
             }
         }
-
         #endregion
     }
 }

@@ -15,7 +15,7 @@ public class SimpleScript : MonoBehaviour
 
         for (int i = 0; i < 50; i++)
         {
-            GameObject obj = this.InstantiateInPool(poolData, new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), 0f), Quaternion.identity);
+            GameObject obj = this.InstantiateFromPool(poolData, new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), 0f), Quaternion.identity);
             yield return new WaitForSeconds(0.4f);
             StartCoroutine(DelayToDestroy(obj, Random.Range(1f, 5f)));
         }

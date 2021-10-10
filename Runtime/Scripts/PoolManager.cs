@@ -12,11 +12,11 @@ namespace ExpressoBits.Pools
         #region Basic Functions
         public static GameObject Instantiate(IPool pool, Vector3 position, Quaternion rotation)
         {
-            return pool.Dequeue(position, rotation);
+            return pool.Instantiate(position, rotation);
         }
         public static void Destroy(GameObject obj, IPool pool)
         {
-            pool.Enqueue(obj);
+            pool.Destroy(obj);
         }
         #endregion
 
