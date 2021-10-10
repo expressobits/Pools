@@ -45,12 +45,12 @@
         "name": "Expresso Bits"
     },
     "license": "MIT",
-    "homepage": "https://github.com/ExpressoBits/EBPools",
+    "homepage": "https://github.com/ExpressoBits/Pools",
     "repository": {
         "type": "git",
-        "url": "https://github.com/ExpressoBits/EBPools.git"
+        "url": "https://github.com/ExpressoBits/Pools.git"
     },
     "bugs": {
-        "url": "https://github.com/ExpressoBits/EBPools/issues"
+        "url": "https://github.com/ExpressoBits/Pools/issues"
     }
 }
