@@ -5,16 +5,16 @@ namespace ExpressoBits.Pools
 {
     public class PoolManager
     {
-        private static readonly Dictionary<GameObject, PoolData> PoolsFromPrefab = new Dictionary<GameObject, PoolData>();
-        private static readonly Dictionary<GameObject, PoolData> PoolsFromObjects = new Dictionary<GameObject, PoolData>();
+        private static readonly Dictionary<GameObject, IPool> PoolsFromPrefab = new Dictionary<GameObject, IPool>();
+        private static readonly Dictionary<GameObject, IPool> PoolsFromObjects = new Dictionary<GameObject, IPool>();
         private const uint defaultIncreaseSize = 5;
 
         #region Basic Functions
-        public static GameObject Instantiate(PoolData pool, Vector3 position, Quaternion rotation)
+        public static GameObject Instantiate(IPool pool, Vector3 position, Quaternion rotation)
         {
             return pool.Dequeue(position, rotation);
         }
-        public static void Destroy(GameObject obj, PoolData pool)
+        public static void Destroy(GameObject obj, IPool pool)
         {
             pool.Enqueue(obj);
         }
@@ -34,7 +34,8 @@ namespace ExpressoBits.Pools
                 {
                     settings = new PoolSettings{ IncreaseSize = defaultIncreaseSize };
                 }
-                pool = new PoolData(settings,prefab);
+                pool = ScriptableObject.CreateInstance<Pool>();
+                pool.Setup(settings,prefab);
                 RegisterPool(pool);
             }
             GameObject obj = Instantiate(pool, position, rotation);
@@ -42,7 +43,7 @@ namespace ExpressoBits.Pools
             return obj;
         }
 
-        public static GameObject Instantiate(PoolData data)
+        public static GameObject Instantiate(Pool data)
         {
             return Instantiate(data, Vector3.zero, Quaternion.identity);
         }
@@ -75,7 +76,7 @@ namespace ExpressoBits.Pools
 
         #region Register and Unregister Pool
         // Register pool in dictionary with instance id pool data
-        private static void RegisterPool(PoolData pool)
+        private static void RegisterPool(IPool pool)
         {
             PoolsFromPrefab.Add(pool.Prefab, pool);
         }
@@ -88,7 +89,7 @@ namespace ExpressoBits.Pools
 
         #endregion
 
-        public static void RegisterPoolIfNotExists(PoolData pool)
+        public static void RegisterPoolIfNotExists(Pool pool)
         {
             if (!PoolsFromPrefab.ContainsKey(pool.Prefab)) RegisterPool(pool);
         }
