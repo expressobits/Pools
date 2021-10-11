@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace ExpressoBits.Pools
+namespace ExpressoBits.Pools.Editor
 {
     [CustomEditor(typeof(Pooler))]
-    public class PoolerEditor : Editor {
+    public class PoolerEditor : UnityEditor.Editor {
         public override void OnInspectorGUI() {
             base.OnInspectorGUI();
         }

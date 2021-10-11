@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0f9a74e7dc35a54b92e71715dad7a90, type: 3}
+  m_Name: Pool Group
+  m_EditorClassIdentifier: 
+  pools:
+  - {fileID: 7545595679441054937}
+  - {fileID: 2137017148614587482}
+--- !u!114 &2137017148614587482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e637315e8d0b394593ee988ac0ba667, type: 3}
+  m_Name: Sphere Pool
+  m_EditorClassIdentifier: 
+  settings:
+    IncreaseSize: 5
+  prefab: {fileID: 6688230184164884764, guid: 3a73844c85bc8924cae5eb6c86978975, type: 3}
+--- !u!114 &7545595679441054937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e637315e8d0b394593ee988ac0ba667, type: 3}
+  m_Name: Cube Pool
+  m_EditorClassIdentifier: 
+  settings:
+    IncreaseSize: 5
+  prefab: {fileID: 8781678333159053775, guid: 5f241d1551f5799408393e2dcdcb090c, type: 3}

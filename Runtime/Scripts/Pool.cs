@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -20,14 +18,14 @@ namespace ExpressoBits.Pools
 
         private void OnValidate()
         {
-            settings.IncreaseSize = Math.Max(settings.IncreaseSize, 1);
+            settings.IncreaseSize = Mathf.Max(settings.IncreaseSize, 1);
         }
 
         #region Basic Methods
         public void Setup(PoolSettings settings, GameObject prefab)
         {
             this.settings = settings;
-            settings.IncreaseSize = Math.Max(settings.IncreaseSize, 1);
+            settings.IncreaseSize = Mathf.Max(settings.IncreaseSize, 1);
             this.prefab = prefab;
             objects = new Queue<GameObject>();
         }

@@ -38,6 +38,15 @@
 
             "path": "Samples~/SimpleScript"
 
+        },
+        {
+
+            "displayName": "Pool Group Example",
+
+            "description": "Simple Scene test with Pool Group for random instantiates from pool",
+
+            "path": "Samples~/Pool Group Example"
+
         }
 
     ],

@@ -7,7 +7,7 @@ namespace ExpressoBits.Pools
     {
         private static readonly Dictionary<GameObject, IPool> PoolsFromPrefab = new Dictionary<GameObject, IPool>();
         private static readonly Dictionary<GameObject, IPool> PoolsFromObjects = new Dictionary<GameObject, IPool>();
-        private const uint defaultIncreaseSize = 5;
+        private const int defaultIncreaseSize = 4;
 
         #region Basic Functions
         public static GameObject Instantiate(IPool pool, Vector3 position, Quaternion rotation)
