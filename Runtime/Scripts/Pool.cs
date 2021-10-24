@@ -37,34 +37,41 @@ namespace ExpressoBits.Pools
 
         public GameObject Instantiate()
         {
-            return Dequeue();
+            GameObject gameObject = Dequeue();
+            gameObject.SetActive(true);
+            return gameObject;
         }
 
         public GameObject Instantiate(Vector3 position, Quaternion rotation)
         {
-            GameObject gameObject = Instantiate();
+            GameObject gameObject = Dequeue();
             gameObject.transform.SetPositionAndRotation(position, rotation);
+            gameObject.SetActive(true);
             return gameObject;
         }
 
         public GameObject Instantiate(Transform parent)
         {
-            GameObject gameObject = Instantiate();
+            GameObject gameObject = Dequeue();
             gameObject.transform.SetParent(parent);
+            gameObject.SetActive(true);
             return gameObject;
         }
 
         public GameObject Instantiate(Transform parent, bool instantiateInWorldSpace)
         {
-            GameObject gameObject = Instantiate();
+            GameObject gameObject = Dequeue();
             gameObject.transform.SetParent(parent, instantiateInWorldSpace);
+            gameObject.SetActive(true);
             return gameObject;
         }
 
         public GameObject Instantiate(Vector3 position, Quaternion rotation, Transform parent)
         {
-            GameObject gameObject = Instantiate(position, rotation);
+            GameObject gameObject = Dequeue();
+            gameObject.transform.SetPositionAndRotation(position, rotation);
             gameObject.transform.SetParent(parent);
+            gameObject.SetActive(true);
             return gameObject;
         }
 
@@ -129,7 +136,6 @@ namespace ExpressoBits.Pools
                 obj = Object.Instantiate(prefab);
             }
             OnPoolerEnable(obj);
-            obj.SetActive(true);
             OnDequeue?.Invoke(this,obj);
 
             // NOTE This exists for cases that have calls in two instantaneous locations and only one has pooldata as a reference.
