@@ -41,7 +41,30 @@ namespace ExpressoBits.Pools.Tests
             pool.Setup(new PoolSettings(){ IncreaseSize = 1 },prefab);
             GameObject obj = pool.Instantiate();
             pool.Destroy(obj);
-            Assert.AreEqual(pool.Objects.Count,1);
+            Assert.AreEqual(1,pool.Objects.Count);
+        }
+
+        [Test]
+        public void InstantiateGameObjectAndCheckIfExistsPoolInPoolManager()
+        {
+            PoolManager.Clear();
+            Pool pool = ScriptableObject.CreateInstance<Pool>();
+            GameObject prefab = new GameObject();
+            pool.Setup(new PoolSettings(){ IncreaseSize = 1 },prefab);
+            GameObject obj = pool.Instantiate();
+            Assert.IsTrue(PoolManager.ContainPoolInPrefabsList(pool));
+        }
+
+        [Test]
+        public void InstantiateGameObjectFromSpecificPoolAndDestroyWithPoolManager()
+        {
+            PoolManager.Clear();
+            Pool pool = ScriptableObject.CreateInstance<Pool>();
+            GameObject prefab = new GameObject();
+            pool.Setup(new PoolSettings(){ IncreaseSize = 1 },prefab);
+            GameObject obj = pool.Instantiate();
+            PoolManager.Destroy(obj);
+            Assert.AreEqual(1,pool.Objects.Count);
         }
 
         [Test]

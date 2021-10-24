@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Object = UnityEngine.Object;
 
 namespace ExpressoBits.Pools
@@ -15,6 +17,9 @@ namespace ExpressoBits.Pools
         [SerializeField] private PoolSettings settings = new PoolSettings() { IncreaseSize = 1 };
         [SerializeField] private GameObject prefab;
         private Queue<GameObject> objects = new Queue<GameObject>();
+
+        public static Action<IPool,GameObject> OnDequeue;
+        public static Action<IPool,GameObject> OnEnqueue;
 
         private void OnValidate()
         {
@@ -102,6 +107,7 @@ namespace ExpressoBits.Pools
             obj.SetActive(false);
             OnPoolerDisable(obj);
             objects.Enqueue(obj);
+            OnEnqueue?.Invoke(this,obj);
         }
 
         /**
@@ -109,9 +115,7 @@ namespace ExpressoBits.Pools
          **/
         private GameObject Dequeue()
         {
-            // NOTE This exists for cases that have calls in two instantaneous locations and only one has pooldata as a reference.
-            PoolManager.RegisterPoolIfNotExists(this);
-            //
+            
 
             if (objects == null) objects = new Queue<GameObject>();
             if (objects.Count == 0)
@@ -126,6 +130,13 @@ namespace ExpressoBits.Pools
             }
             OnPoolerEnable(obj);
             obj.SetActive(true);
+            OnDequeue?.Invoke(this,obj);
+
+            // NOTE This exists for cases that have calls in two instantaneous locations and only one has pooldata as a reference.
+            PoolManager.RegisterPoolIfNotExists(this);
+            PoolManager.RegisterPoolWithGameObjectIfNotExists(this,obj);
+            //
+
             return obj;
         }
         #endregion

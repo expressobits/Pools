@@ -23,7 +23,7 @@ namespace ExpressoBits.Pools
         #region Variants
         public static GameObject Instantiate(GameObject prefab, Vector3 position, Quaternion rotation)
         {
-            if (!PoolsFromPrefab.TryGetValue(prefab, out var pool))
+            if (!PoolsFromPrefab.TryGetValue(prefab, out IPool pool))
             {
                 PoolSettings settings;
                 if (prefab.TryGetComponent(out Pooler pooler))
@@ -39,7 +39,7 @@ namespace ExpressoBits.Pools
                 RegisterPool(pool);
             }
             GameObject obj = Instantiate(pool, position, rotation);
-            if(!PoolsFromObjects.ContainsKey(obj)) PoolsFromObjects.Add(obj,pool);
+            RegisterPoolWithGameObjectIfNotExists(pool,obj);
             return obj;
         }
 
@@ -89,9 +89,30 @@ namespace ExpressoBits.Pools
 
         #endregion
 
-        public static void RegisterPoolIfNotExists(Pool pool)
+        public static bool ContainPoolInPrefabsList(IPool pool)
         {
-            if (!PoolsFromPrefab.ContainsKey(pool.Prefab)) RegisterPool(pool);
+            return PoolsFromPrefab.ContainsKey(pool.Prefab);
+        }
+
+        public static bool ContainGameObjectInPoolList(GameObject gameObject)
+        {
+            return PoolsFromObjects.ContainsKey(gameObject);
+        }
+
+        public static void RegisterPoolIfNotExists(IPool pool)
+        {
+            if (!ContainPoolInPrefabsList(pool)) RegisterPool(pool);
+        }
+
+        public static void RegisterPoolWithGameObjectIfNotExists(IPool pool, GameObject gameObject)
+        {
+            if (!ContainGameObjectInPoolList(gameObject)) PoolsFromObjects.Add(gameObject, pool);
+        }
+
+        public static void Clear()
+        {
+            PoolsFromPrefab.Clear();
+            PoolsFromObjects.Clear();
         }
 
     }
