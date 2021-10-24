@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ExpressoBits.Pools;
 using UnityEngine;
 using Random = UnityEngine.Random;

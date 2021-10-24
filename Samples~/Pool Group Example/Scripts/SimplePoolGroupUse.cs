@@ -18,11 +18,5 @@ public class SimplePoolGroupUse : MonoBehaviour
             this.DestroyInPool(obj2,Random.Range(1f, 5f));
         }
     }
-
-    // private IEnumerator DelayToDestroy(GameObject obj,float seconds)
-    // {
-    //     yield return new WaitForSeconds(seconds);
-    //     this.Destroy(obj);
-    // }
     
 }

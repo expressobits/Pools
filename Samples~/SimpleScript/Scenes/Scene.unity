@@ -325,12 +325,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1849725097}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbaa007cf2b9b2f4fbf5e8ccd379a7f3, type: 3}
+  m_Script: {fileID: 11500000, guid: aa59061e5845b6940976ee5281865e23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8781678333159053775, guid: 37a9353f1282b9a4aa7d630d6b0e9e0c, type: 3}
-  prefab2: {fileID: 6688230184164884764, guid: 3a73844c85bc8924cae5eb6c86978975, type: 3}
-  pool: {fileID: 11400000, guid: dba1a75e7f3187c4dbd249a03a6cf25d, type: 2}
+  prefab: {fileID: 8781678333159053775, guid: 3b84508b1fc0a6a42ad4c079112d8278, type: 3}
 --- !u!4 &1849725099
 Transform:
   m_ObjectHideFlags: 0
