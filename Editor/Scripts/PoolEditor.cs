@@ -62,6 +62,7 @@ namespace ExpressoBits.Pools.Editor
             }
             EditorGUILayout.LabelField(actualObjects);
             EditorGUILayout.EndHorizontal();
+            serializedObject.ApplyModifiedProperties();
         }
 
         public static void ShowPool()
