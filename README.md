@@ -1,5 +1,5 @@
 # Welcome to Expresso Bits Pools 👋
-![Version](https://img.shields.io/badge/version-1.1.8-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-1.2.0-blue.svg?cacheSeconds=2592000)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](todo-doc)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](MIT)
 [![Twitter: ScriptsEngineer](https://img.shields.io/twitter/follow/ScriptsEngineer.svg?style=social)](https://twitter.com/ScriptsEngineer)
